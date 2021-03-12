@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE KSysGuardWorkSheet>
+<WorkSheet locked="0" rows="3" columns="3" title="icasa.ru Disks" interval="0.5">
+ <host port="-1" name="icasa.ru" shell="" command="ssh -l master ssh.icasa.ru ksysguardd"/>
+ <display vDistance="30" vScroll="0" version="1" stacked="0" rowSpan="1" unit="" max="51200" row="0" labels="1" showUnit="0" hLines="1" min="0" svgBackground="" fontSize="8" vLines="0" columnSpan="1" manualRange="1" autoRange="1" title="/ R/W Data" hScale="3" class="FancyPlotter" column="0">
+  <beam hostName="icasa.ru" sensorName="disk/sdc_(8:32)/Rate/rblk" sensorType="float" color="0xff0057ae"/>
+  <beam hostName="icasa.ru" sensorName="disk/sdc_(8:32)/Rate/wblk" sensorType="float" color="0xffe20800"/>
+ </display>
+ <display vDistance="30" vScroll="0" version="1" stacked="1" rowSpan="1" unit="" row="1" labels="1" showUnit="0" hLines="1" svgBackground="" fontSize="8" vLines="0" columnSpan="1" manualRange="0" autoRange="1" title="/ R/W Accesses" hScale="3" class="FancyPlotter" column="0">
+  <beam hostName="icasa.ru" sensorName="disk/sdc_(8:32)/Rate/rio" sensorType="float" color="0xff0057ae"/>
+  <beam hostName="icasa.ru" sensorName="disk/sdc_(8:32)/Rate/wio" sensorType="float" color="0xffe20800"/>
+ </display>
+ <display vDistance="30" vScroll="0" version="1" stacked="0" rowSpan="1" unit="" row="2" labels="1" showUnit="0" hLines="1" svgBackground="" fontSize="8" vLines="0" columnSpan="1" manualRange="0" autoRange="1" title="/ Milliseconds spent reading" hScale="3" class="FancyPlotter" column="0">
+  <beam hostName="icasa.ru" sensorName="disk/sdc_(8:32)/Delta/rtim" sensorType="integer" color="0xff0057ae"/>
+  <beam hostName="icasa.ru" sensorName="disk/sdc_(8:32)/Delta/wtim" sensorType="integer" color="0xffe20800"/>
+ </display>
+ <display vDistance="30" vScroll="0" version="1" stacked="0" rowSpan="1" unit="" max="199680" row="0" labels="1" showUnit="0" hLines="1" min="0" svgBackground="" fontSize="8" vLines="0" columnSpan="1" manualRange="1" autoRange="1" title="100Gb R/W Data" hScale="3" class="FancyPlotter" column="1">
+  <beam hostName="icasa.ru" sensorName="disk/sda_(8:0)/Rate/rblk" sensorType="float" color="0xff0057ae"/>
+  <beam hostName="icasa.ru" sensorName="disk/sda_(8:0)/Rate/wblk" sensorType="float" color="0xffe20800"/>
+ </display>
+ <display vDistance="30" vScroll="0" version="1" stacked="1" rowSpan="1" unit="" row="1" labels="1" showUnit="0" hLines="1" svgBackground="" fontSize="8" vLines="0" columnSpan="1" manualRange="0" autoRange="1" title="100Gb R/W Accesses" hScale="3" class="FancyPlotter" column="1">
+  <beam hostName="icasa.ru" sensorName="disk/sda_(8:0)/Rate/rio" sensorType="float" color="0xff0057ae"/>
+  <beam hostName="icasa.ru" sensorName="disk/sda_(8:0)/Rate/wio" sensorType="float" color="0xffe20800"/>
+ </display>
+ <display vDistance="30" vScroll="0" version="1" stacked="0" rowSpan="1" unit="" row="2" labels="1" showUnit="0" hLines="1" svgBackground="" fontSize="8" vLines="0" columnSpan="1" manualRange="0" autoRange="1" title="100Gb Milliseconds spent reading" hScale="3" class="FancyPlotter" column="1">
+  <beam hostName="icasa.ru" sensorName="disk/sda_(8:0)/Delta/rtim" sensorType="integer" color="0xff0057ae"/>
+  <beam hostName="icasa.ru" sensorName="disk/sda_(8:0)/Delta/wtim" sensorType="integer" color="0xffe20800"/>
+ </display>
+ <display vDistance="30" vScroll="0" version="1" stacked="0" rowSpan="1" unit="" max="102400" row="0" labels="1" showUnit="0" hLines="1" min="0" svgBackground="" fontSize="8" vLines="0" columnSpan="1" manualRange="1" autoRange="1" title="/backup R/W Data" hScale="3" class="FancyPlotter" column="2">
+  <beam hostName="icasa.ru" sensorName="disk/sdb_(8:16)/Rate/rblk" sensorType="float" color="0xff0057ae"/>
+  <beam hostName="icasa.ru" sensorName="disk/sdb_(8:16)/Rate/wblk" sensorType="float" color="0xffe20800"/>
+ </display>
+ <display vDistance="30" vScroll="0" version="1" stacked="1" rowSpan="1" unit="" row="1" labels="1" showUnit="0" hLines="1" svgBackground="" fontSize="8" vLines="0" columnSpan="1" manualRange="0" autoRange="1" title="/backup R/W Accesses" hScale="3" class="FancyPlotter" column="2">
+  <beam hostName="icasa.ru" sensorName="disk/sdb_(8:16)/Rate/rio" sensorType="float" color="0xff0057ae"/>
+  <beam hostName="icasa.ru" sensorName="disk/sdb_(8:16)/Rate/wio" sensorType="float" color="0xffe20800"/>
+ </display>
+ <display vDistance="30" vScroll="0" version="1" stacked="0" rowSpan="1" unit="" row="2" labels="1" showUnit="0" hLines="1" svgBackground="" fontSize="8" vLines="0" columnSpan="1" manualRange="0" autoRange="1" title="/backup Milliseconds spent reading" hScale="3" class="FancyPlotter" column="2">
+  <beam hostName="icasa.ru" sensorName="disk/sdb_(8:16)/Delta/rtim" sensorType="integer" color="0xff0057ae"/>
+  <beam hostName="icasa.ru" sensorName="disk/sdb_(8:16)/Delta/wtim" sensorType="integer" color="0xffe20800"/>
+ </display>
+</WorkSheet>

@@ -1,0 +1,17 @@
+
+# fuseiso
+[Desktop Entry]
+Type=Service
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin,inode/file
+MimeType=application/x-iso9660-appimage;application/x-cd-image;application/x-gamecube-rom;
+Actions=mntiso
+
+[Desktop Action mntiso]
+Name=Mount ISO
+Exec=mkdir %f.mount && fuseiso %f %f.mount
+Icon=application-x-iso
+
+[Desktop Action umntiso]
+Name=Unmount ISO
+Exec=fusermount -u %f && rmdir %f
+Icon=application-x-iso

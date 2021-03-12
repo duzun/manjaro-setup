@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE KSysGuardWorkSheet>
+<WorkSheet locked="0" rows="3" columns="2" title="duzun.me SysLoad" interval="0.5">
+ <host port="-1" name="duzun.me" shell="" command="ssh -l root ssh.duzun.me ksysguardd"/>
+ <display vDistance="30" vScroll="0" version="1" stacked="0" rowSpan="1" unit="" row="0" labels="1" showUnit="0" hLines="1" svgBackground="" fontSize="8" vLines="0" columnSpan="2" manualRange="0" autoRange="1" title="CPU History" hScale="4" class="FancyPlotter" column="0">
+  <beam hostName="duzun.me" sensorName="cpu/system/TotalLoad" sensorType="float" color="0x88000000"/>
+  <beam hostName="duzun.me" sensorType="float" color="0xffff8000,0xffe20800" regexpSensorName="cpu/cpu.*/TotalLoad"/>
+ </display>
+ <display vDistance="30" vScroll="1" version="1" stacked="1" rowSpan="1" unit="" row="1" labels="1" showUnit="0" hLines="1" svgBackground="" fontSize="8" vLines="1" columnSpan="1" manualRange="1" max="2048324" autoRange="1" title="Mem &amp; Cache History" hScale="2" class="FancyPlotter" column="0">
+  <beam hostName="duzun.me" sensorName="mem/physical/application" sensorType="integer" color="0xffff0000"/>
+  <beam hostName="duzun.me" sensorName="mem/physical/buf" sensorType="integer" color="0xff6378ff"/>
+  <beam hostName="duzun.me" sensorName="mem/physical/cached" sensorType="integer" color="0xff0e23df"/>
+ </display>
+<display vDistance="30" vScroll="1" version="1" stacked="1" rowSpan="1" unit="" row="1" labels="1" showUnit="0" hLines="1" svgBackground="" fontSize="8" vLines="1" columnSpan="1" manualRange="1" max="2048324" autoRange="1" title="Swap History" hScale="2" class="FancyPlotter" column="1">
+  <beam hostName="duzun.me" sensorName="mem/swap/used" sensorType="integer" color="0xff00ff00"/>
+ </display>
+ <display vDistance="30" vScroll="0" version="1" stacked="0" rowSpan="1" unit="" max="12800" row="2" labels="1" showUnit="0" hLines="1" min="0" svgBackground="" fontSize="8" vLines="1" columnSpan="1" manualRange="1" autoRange="1" title="Network History" hScale="2" class="FancyPlotter" column="0">
+  <beam hostName="duzun.me" sensorName="network/interfaces/eth0/receiver/data" sensorType="float" color="0xff0057ae"/>
+  <beam hostName="duzun.me" sensorName="network/interfaces/eth0/transmitter/data" sensorType="float" color="0xffe20800"/>
+ </display>
+<display vDistance="30" vScroll="1" version="1" stacked="0" rowSpan="1" unit="" row="2" labels="1" showUnit="0" hLines="1" svgBackground="widgets/plot-background" fontSize="8" vLines="1" columnSpan="1" manualRange="0" autoRange="1" title="Disk R/W" hScale="2" class="FancyPlotter" column="1">
+  <beam hostName="duzun.me" sensorType="float" color="0xff0057ae" summationName="Reads" regexpSensorName="disk/(nvme(\d+|\d+n\d+)|sd[a-z]+|mmcblk\d+|vda\d*)_.*/Rate/rblk"/>
+  <beam hostName="duzun.me" sensorType="float" color="0xffe20800" summationName="Writes" regexpSensorName="disk/(nvme(\d+|\d+n\d+)|sd[a-z]+|mmcblk\d+|vda\d*)_.*/Rate/wblk"/>
+ </display>
+</WorkSheet>

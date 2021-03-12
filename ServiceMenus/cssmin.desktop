@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Service
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+MimeType=text/css;
+Actions=CSSmin
+
+[Desktop Action CSSmin]
+Name=CSS Min
+Exec=cssmin "%U"
+Icon=css

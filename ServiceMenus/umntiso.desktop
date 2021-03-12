@@ -1,0 +1,11 @@
+
+# fuseiso
+[Desktop Entry]
+Type=Service
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin,inode/directory
+Actions=umntiso
+
+[Desktop Action umntiso]
+Name=Unmount ISO
+Exec=fusermount -u %f && rmdir %f
+Icon=application-x-iso

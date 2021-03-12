@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE KSysGuardWorkSheet>
+<WorkSheet rows="3" locked="0" interval="0.5" title="zerver Disks" columns="3">
+ <host shell="" command="ssh -l icasa zerver ksysguardd" port="-1" name="zerver"/>
+ <display svgBackground="" title="/ R/W Data" labels="1" fontSize="8" rowSpan="1" vLines="0" stacked="0" vDistance="30" vScroll="0" class="FancyPlotter" unit="" columnSpan="1" version="1" autoRange="1" hLines="1" hScale="6" column="0" manualRange="0" row="0" showUnit="0">
+  <beam sensorType="float" sensorName="disk/sdc_(8:32)/Rate/rblk" hostName="zerver" color="0xff0057ae"/>
+  <beam sensorType="float" sensorName="disk/sdc_(8:32)/Rate/wblk" hostName="zerver" color="0xffe20800"/>
+ </display>
+ <display svgBackground="" title="/ R/W Accesses" labels="1" fontSize="8" rowSpan="1" vLines="0" stacked="0" vDistance="30" vScroll="0" class="FancyPlotter" unit="" columnSpan="1" version="1" autoRange="1" hLines="1" hScale="6" column="0" manualRange="0" row="1" showUnit="0">
+  <beam sensorType="float" sensorName="disk/sdc_(8:32)/Rate/rio" hostName="zerver" color="0xff0057ae"/>
+  <beam sensorType="float" sensorName="disk/sdc_(8:32)/Rate/wio" hostName="zerver" color="0xffe20800"/>
+  <beam sensorType="float" sensorName="disk/sdc_(8:32)/Rate/totalio" hostName="zerver" color="0xfff3c300"/>
+ </display>
+ <display svgBackground="" title="/ Milliseconds spent reading" labels="1" fontSize="8" rowSpan="1" vLines="0" stacked="0" vDistance="30" vScroll="0" class="FancyPlotter" unit="" columnSpan="1" version="1" autoRange="1" hLines="1" hScale="6" column="0" manualRange="0" row="2" showUnit="0">
+  <beam sensorType="integer" sensorName="disk/sdc_(8:32)/Delta/rtim" hostName="zerver" color="0xff0057ae"/>
+  <beam sensorType="integer" sensorName="disk/sdc_(8:32)/Delta/wtim" hostName="zerver" color="0xffe20800"/>
+ </display>
+ <display svgBackground="" title="/hdd R/W Data" labels="1" fontSize="8" rowSpan="1" vLines="0" stacked="0" vDistance="30" vScroll="0" class="FancyPlotter" unit="" columnSpan="1" version="1" autoRange="1" hLines="1" hScale="6" column="1" manualRange="0" row="0" showUnit="0">
+  <beam sensorType="float" sensorName="disk/sdb_(8:16)/Rate/rblk" hostName="zerver" color="0xff0057ae"/>
+  <beam sensorType="float" sensorName="disk/sdb_(8:16)/Rate/wblk" hostName="zerver" color="0xffe20800"/>
+ </display>
+ <display svgBackground="" title="/hdd R/W Accesses" labels="1" fontSize="8" rowSpan="1" vLines="0" stacked="0" vDistance="30" vScroll="0" class="FancyPlotter" unit="" columnSpan="1" version="1" autoRange="1" hLines="1" hScale="6" column="1" manualRange="0" row="1" showUnit="0">
+  <beam sensorType="float" sensorName="disk/sdb_(8:16)/Rate/rio" hostName="zerver" color="0xff0057ae"/>
+  <beam sensorType="float" sensorName="disk/sdb_(8:16)/Rate/wio" hostName="zerver" color="0xffe20800"/>
+  <beam sensorType="float" sensorName="disk/sdb_(8:16)/Rate/totalio" hostName="zerver" color="0xfff3c300"/>
+ </display>
+ <display svgBackground="" title="/hdd Milliseconds spent reading" labels="1" fontSize="8" rowSpan="1" vLines="0" stacked="0" vDistance="30" vScroll="0" class="FancyPlotter" unit="" columnSpan="1" version="1" autoRange="1" hLines="1" hScale="6" column="1" manualRange="0" row="2" showUnit="0">
+  <beam sensorType="integer" sensorName="disk/sdb_(8:16)/Delta/rtim" hostName="zerver" color="0xff0057ae"/>
+  <beam sensorType="integer" sensorName="disk/sdb_(8:16)/Delta/wtim" hostName="zerver" color="0xffe20800"/>
+ </display>
+ <display svgBackground="" title="sda R/W Data" labels="1" fontSize="8" rowSpan="1" vLines="0" stacked="0" vDistance="30" vScroll="0" class="FancyPlotter" unit="" columnSpan="1" version="1" autoRange="1" hLines="1" hScale="6" column="2" manualRange="0" row="0" showUnit="0">
+  <beam sensorType="float" sensorName="disk/sda_(8:0)/Rate/rblk" hostName="zerver" color="0xff0057ae"/>
+  <beam sensorType="float" sensorName="disk/sda_(8:0)/Rate/wblk" hostName="zerver" color="0xffe20800"/>
+ </display>
+ <display svgBackground="" title="sda R/W Accesses" labels="1" fontSize="8" rowSpan="1" vLines="0" stacked="0" vDistance="30" vScroll="0" class="FancyPlotter" unit="" columnSpan="1" version="1" autoRange="1" hLines="1" hScale="6" column="2" manualRange="0" row="1" showUnit="0">
+  <beam sensorType="float" sensorName="disk/sda_(8:0)/Rate/rio" hostName="zerver" color="0xff0057ae"/>
+  <beam sensorType="float" sensorName="disk/sda_(8:0)/Rate/wio" hostName="zerver" color="0xffe20800"/>
+  <beam sensorType="float" sensorName="disk/sda_(8:0)/Rate/totalio" hostName="zerver" color="0xfff3c300"/>
+ </display>
+ <display svgBackground="" title="sda Milliseconds spent reading" labels="1" fontSize="8" rowSpan="1" vLines="0" stacked="0" vDistance="30" vScroll="0" class="FancyPlotter" unit="" columnSpan="1" version="1" autoRange="1" hLines="1" hScale="6" column="2" manualRange="0" row="2" showUnit="0">
+  <beam sensorType="integer" sensorName="disk/sda_(8:0)/Delta/rtim" hostName="zerver" color="0xff0057ae"/>
+  <beam sensorType="integer" sensorName="disk/sda_(8:0)/Delta/wtim" hostName="zerver" color="0xffe20800"/>
+ </display>
+</WorkSheet>

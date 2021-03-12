@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin,text/*,application/x-desktop
+Actions=Editassu
+
+[Desktop Action Editassu]
+Name=Edit as Root (subl)
+Icon=subl
+Exec=sudo "subl" "%U"

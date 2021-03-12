@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE KSysGuardWorkSheet>
+<WorkSheet locked="0" rows="7" columns="2" title="icasa.ru SysLoad" interval="0.5">
+    <host port="-1" name="icasa.ru" shell="" command="ssh -l master ssh.icasa.ru ksysguardd"/>
+    <display row="0" column="0" rowSpan="2" columnSpan="2" vDistance="30" vScroll="0" version="1" stacked="0" unit="" max="100" labels="1" showUnit="0" hLines="1" min="0" svgBackground="" fontSize="8" vLines="0" manualRange="1" autoRange="1" title="CPU History" hScale="2" class="FancyPlotter">
+        <beam hostName="icasa.ru" sensorName="cpu/system/TotalLoad" sensorType="float" color="0x88000000"/>
+        <beam hostName="icasa.ru" sensorType="float" color="0xffff8000,0xffe20800,0xfff3c300,0xffff0000,0xff00a900,0xff0028a9,0xffa92928,0xff28a929" regexpSensorName="cpu/cpu.*/TotalLoad"/>
+    </display>
+    <display row="2" column="0" rowSpan="1" columnSpan="2" vDistance="30" vScroll="0" version="1" stacked="0" unit="" max="100" labels="1" showUnit="0" hLines="1" min="0" svgBackground="" fontSize="7" vLines="1" manualRange="1" autoRange="1" title="Core Temperature" hScale="2" class="FancyPlotter">
+        <beam hostName="icasa.ru" sensorType="float" color="0xffff8000,0xffe20800,0xfff3c300,0xffff0000" regexpSensorName="lmsensors/coretemp-isa-\d+/Core_\d+"/>
+    </display>
+    <display row="3" column="0" rowSpan="2" columnSpan="1" vDistance="30" vScroll="0" version="1" stacked="1" unit="" labels="1" showUnit="0" hLines="1" svgBackground="" fontSize="8" vLines="1" manualRange="0" autoRange="1" title="Mem &amp; Cache History" hScale="2" class="FancyPlotter">
+        <beam hostName="icasa.ru" sensorName="mem/physical/application" sensorType="integer" color="0xffff0000"/>
+        <beam hostName="icasa.ru" sensorName="mem/physical/buf" sensorType="integer" color="0xff6378ff"/>
+        <beam hostName="icasa.ru" sensorName="mem/physical/cached" sensorType="integer" color="0xff0e23df"/>
+    </display>
+    <display row="3" column="1" rowSpan="2" columnSpan="1" vDistance="30" vScroll="0" version="1" stacked="1" unit="" labels="1" showUnit="0" hLines="1" svgBackground="" fontSize="8" vLines="1" manualRange="0" autoRange="1" title="Swap History" hScale="2" class="FancyPlotter">
+        <beam hostName="icasa.ru" sensorName="mem/swap/used" sensorType="integer" color="0xff00ff00"/>
+    </display>
+    <display row="5" column="0" rowSpan="2" columnSpan="1" vDistance="30" vScroll="0" version="1" stacked="0" unit="" max="12800" labels="1" showUnit="0" hLines="1" min="0" svgBackground="" fontSize="8" vLines="1" manualRange="1" autoRange="1" title="Network History" hScale="2" class="FancyPlotter">
+        <beam hostName="icasa.ru" sensorType="float" color="0xff0057ae" summationName="Receiving" regexpSensorName="network/interfaces/(?!lo|veth|bridge|usbus|bond|docker|br\-).*/receiver/data"/>
+        <beam hostName="icasa.ru" sensorType="float" color="0xffe20800" summationName="Sending" regexpSensorName="network/interfaces/(?!lo|veth|bridge|usbus|bond|docker|br\-).*/transmitter/data"/>
+    </display>
+    <display row="5" column="1" rowSpan="2" columnSpan="1" vDistance="30" version="1" showUnit="0" stacked="0" hScale="2" unit="" hLines="1" vScroll="1" autoRange="1" vLines="1" fontSize="8" class="FancyPlotter" svgBackground="widgets/plot-background" manualRange="0" title="Disk R/W" labels="1">
+        <beam sensorType="float" hostName="icasa.ru" color="0xff0057ae" summationName="Reads" regexpSensorName="disk/(nvme(\d+|\d+n\d+)|sd[a-z]+|mmcblk\d+|vda\d*)_.*/Rate/rblk"/>
+        <beam sensorType="float" hostName="icasa.ru" color="0xffe20800" summationName="Writes" regexpSensorName="disk/(nvme(\d+|\d+n\d+)|sd[a-z]+|mmcblk\d+|vda\d*)_.*/Rate/wblk"/>
+    </display>
+</WorkSheet>

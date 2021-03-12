@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE KSysGuardWorkSheet>
+<WorkSheet interval="1" title="icasa.ru Proc" locked="0" rows="1" columns="1">
+ <host name="root@icasa.ru" shell="" command="ssh -l master ssh.icasa.ru 'su -c &quot;ksysguardd&quot; root'" port="-1"/>
+ <display treeViewHeader="AAAA/wAAAAAAAAABAAAAAAAAAAoBAAAAAAAAAAAAAAARgLMBAAAABwAAAAkAAABNAAAACAAAAEQAAAAPAAAATQAAAA0AAABNAAAADAAAAE0AAAAHAAAAQgAAABAAAABNAAAHpgAAABEBAQABAAAAAAAAAAAAAAAATf////8AAACBAAAAAAAAABEAAABwAAAAAQAAAAAAAABNAAAAAQAAAAAAAAAsAAAAAQAAAAAAAAAtAAAAAQAAAAAAAABHAAAAAQAAAAAAAABOAAAAAQAAAAAAAABKAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAABEAAAAAQAAAAAAAABZAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAUUAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAPoAAAABRQ=" showCommandLineOptions="0" filterState="0" showUnit="0" title="icasa.ru Proc" version="7" rowSpan="1" sensorName="ps" normalizeCPUUsage="1" row="0" sensorType="table" showTooltips="1" class="ProcessController" column="0" ioInformation="2" hostName="root@icasa.ru" unit="" units="1" showTotals="1" columnSpan="1" ioUnits="1"/>
+</WorkSheet>

@@ -1,0 +1,76 @@
+version: "3.6"
+networks:
+    traefik:
+        driver: bridge
+        name: traefik
+
+services:
+    traefik:
+        image: traefik:v2.1
+        container_name: traefik
+        restart: always
+        # network_mode: bridge
+        hostname: "traefik.lh"
+        # Enables the web UI and tells Traefik to listen to docker
+        command: --api.insecure=true --accesslog=true --providers.docker.defaultRule='Host(`{{ or (index .Labels "hostname") (normalize .Name) }}`)'
+        labels:
+            hostname: "traefik.lh"
+            traefik.enable: true
+            traefik.docker.network: traefik
+            # If the container exposes more than one port, we have to tell
+            # Traefik which one to use:
+            traefik.http.services.traefik.loadbalancer.server.port: "8080"
+            # This rule is the same as the defaultRule (see labels.hostname)
+            # traefik.http.routers.traefik.rule: "Host(`traefik.lh`)"
+        ports:
+            # The HTTP port
+            - "81:80"
+            # The HTTPS port
+            - "1443:443"
+            # The Web UI (enabled by --api.insecure=true) exposed through Traefik
+            # - "8902:8080"
+        volumes:
+            # So that Traefik can listen to the Docker events
+            - /var/run/docker.sock:/var/run/docker.sock
+        networks:
+            - traefik
+
+    portainer:
+        image: portainer/portainer
+        container_name: portainer
+        restart: always
+        # network_mode: bridge
+        hostname: "portainer.lh"
+        labels:
+            hostname: "portainer.lh"
+            traefik.enable: true
+            traefik.docker.network: traefik
+            # There is only one port exposed for this container,
+            # thus no need to define it explicitly
+            # traefik.http.services.portainer.loadbalancer.server.port: "9000"
+        # ports:
+        #     Web UI through traefik
+        #     - 8901:9000
+        volumes:
+            - /run/docker.sock:/var/run/docker.sock
+            - /data
+        networks:
+            - traefik
+
+    mailhog:
+        image: mailhog/mailhog
+        container_name: mailhog
+        restart: always
+        # network_mode: bridge
+        hostname: "mailhog.lh"
+        labels:
+            hostname: "mailhog.lh"
+            traefik.enable: true
+            traefik.docker.network: traefik
+            traefik.http.services.mailhog.loadbalancer.server.port: "8025"
+        ports:
+            - 25:1025
+            # Web UI through traefik
+            # - 8025:8025
+        networks:
+            - traefik

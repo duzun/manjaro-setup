@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE KSysGuardWorkSheet>
+<WorkSheet interval="3" rows="2" title="icasa.ru Sockets" locked="0" columns="1">
+ <host command="ssh -l master ssh.icasa.ru ksysguardd" port="-1" name="icasa.ru" shell=""/>
+ <display manualRange="0" vLines="0" rowSpan="1" autoRange="1" labels="1" vDistance="30" class="FancyPlotter" vScroll="0" fontSize="8" columnSpan="1" version="1" column="0" row="0" unit="" stacked="0" hScale="6" title="Data Rate" svgBackground="" hLines="1" showUnit="0">
+  <beam sensorName="network/interfaces/eth0/receiver/data" sensorType="float" hostName="icasa.ru" color="0xff0057ae"/>
+  <beam sensorName="network/interfaces/eth0/transmitter/data" sensorType="float" hostName="icasa.ru" color="0xffe20800"/>
+ </display>
+ <display manualRange="0" vLines="0" rowSpan="1" autoRange="1" labels="1" vDistance="30" class="FancyPlotter" vScroll="0" fontSize="8" columnSpan="1" version="1" column="0" row="1" unit="" stacked="0" hScale="6" title="Total Number" svgBackground="" hLines="1" showUnit="0">
+  <beam sensorName="network/sockets/tcp/count" sensorType="integer" hostName="icasa.ru" color="0xff0057ae"/>
+  <beam sensorName="network/sockets/udp/count" sensorType="integer" hostName="icasa.ru" color="0xffe20800"/>
+  <beam sensorName="network/sockets/unix/count" sensorType="integer" hostName="icasa.ru" color="0xfff3c300"/>
+  <beam sensorName="network/sockets/raw/count" sensorType="integer" hostName="icasa.ru" color="0xffff0000"/>
+ </display>
+</WorkSheet>

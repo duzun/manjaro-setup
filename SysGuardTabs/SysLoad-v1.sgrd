@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE KSysGuardWorkSheet>
+<WorkSheet locked="1" rows="7" columns="2" title="SysLoad" interval="0.5">
+ <host port="-1" name="localhost" shell="" command="ksysguardd"/>
+ <display vDistance="30" vScroll="0" version="1" stacked="0" rowSpan="2" unit="" row="0" labels="1" showUnit="0" hLines="1" svgBackground="widgets/plot-background" fontSize="8" vLines="0" columnSpan="2" manualRange="0" autoRange="0" title="CPU History" hScale="4" class="FancyPlotter" column="0">
+  <beam hostName="localhost" sensorType="float" color="0xffff8000,0xffe20800,0xfff3c300,0xffff0000,0xff00a900,0xff0028a9,0xffa92928,0xff28a929,0xff297da9,0xffa9bd7d,0xff7dbdbd,0xffbdfdbd" regexpSensorName="cpu/cpu.*/TotalLoad"/>
+ </display>
+ <display vDistance="30" vScroll="0" version="1" stacked="0" rowSpan="1" unit="" max="100" row="2" labels="1" showUnit="0" hLines="1" min="0" svgBackground="widgets/plot-background" fontSize="7" vLines="1" columnSpan="2" manualRange="1" autoRange="1" title="Core Temperature" hScale="4" class="FancyPlotter" column="0">
+  <beam hostName="localhost" sensorName="acpi/Thermal_Zone/2-x86_pkg_temp/Temperature" sensorType="integer" color="0xff000000"/>
+  <beam hostName="localhost" sensorType="float" color="0xffff8000,0xffe20800,0xfff3c300,0xffff0000,0xff0028a9,0xffa92928" regexpSensorName="lmsensors/coretemp-isa-\d+/Core_\d+"/>
+ </display>
+ <display vDistance="30" vScroll="1" version="1" stacked="1" rowSpan="2" unit="" max="16252928" row="3" labels="1" showUnit="0" hLines="1" min="0" svgBackground="widgets/plot-background" fontSize="8" vLines="1" columnSpan="1" manualRange="1" autoRange="0" title="Memory and Swap History" hScale="3" class="FancyPlotter" column="0">
+  <beam hostName="localhost" sensorName="mem/physical/application" sensorType="integer" color="0xffc000c0" summationName="Memory"/>
+  <beam hostName="localhost" sensorName="mem/swap/used" sensorType="integer" color="0xff00c000" summationName="Swap"/>
+  <beam hostName="localhost" sensorName="mem/physical/buf" sensorType="integer" color="0xff6378ff"/>
+  <beam hostName="localhost" sensorName="mem/physical/cached" sensorType="integer" color="0xff0e23df"/>
+ </display>
+ <display vDistance="30" vScroll="1" version="1" stacked="0" rowSpan="2" unit="" row="3" labels="1" showUnit="0" hLines="1" svgBackground="widgets/plot-background" fontSize="8" vLines="1" columnSpan="1" manualRange="0" autoRange="1" title="Disk R/W" hScale="3" class="FancyPlotter" column="1">
+  <beam hostName="localhost" sensorType="float" color="0xff0057ae" summationName="Reads" regexpSensorName="disk/(nvme(\d+|\d+n\d+)|sd[a-z]+|mmcblk\d+|vda\d*)_.*/Rate/rblk"/>
+  <beam hostName="localhost" sensorType="float" color="0xffe20800" summationName="Writes" regexpSensorName="disk/(nvme(\d+|\d+n\d+)|sd[a-z]+|mmcblk\d+|vda\d*)_.*/Rate/wblk"/>
+ </display>
+ <display vDistance="30" vScroll="0" version="1" stacked="0" rowSpan="2" unit="" max="12500" row="5" labels="1" showUnit="0" hLines="1" min="0" svgBackground="widgets/plot-background" fontSize="8" vLines="1" columnSpan="1" manualRange="1" autoRange="1" title="Network History" hScale="3" class="FancyPlotter" column="0">
+  <beam hostName="localhost" sensorType="float" color="0xffb3a52d" summationName="Receiving" regexpSensorName="network/interfaces/(?!lo|veth|bridge|usbus|bond|docker|br\-).*/receiver/data"/>
+  <beam hostName="localhost" sensorType="float" color="0xff844798" summationName="Sending" regexpSensorName="network/interfaces/(?!lo|veth|bridge|usbus|bond|docker|br\-).*/transmitter/data"/>
+ </display>
+ <display vDistance="30" vScroll="0" version="1" stacked="0" rowSpan="2" unit="" row="5" labels="1" showUnit="0" hLines="1" svgBackground="widgets/plot-background" fontSize="8" vLines="1" columnSpan="1" manualRange="0" autoRange="1" title="Sockets" hScale="3" class="FancyPlotter" column="1">
+  <beam hostName="localhost" sensorName="network/sockets/unix/count" sensorType="integer" color="0xfff3c300" summationName="UnixDomain"/>
+  <beam hostName="localhost" sensorName="network/sockets/tcp/count" sensorType="integer" color="0xff0057ae" summationName="TCP"/>
+  <beam hostName="localhost" sensorName="network/sockets/udp/count" sensorType="integer" color="0xffe20800" summationName="UDP"/>
+  <beam hostName="localhost" sensorName="network/sockets/raw/count" sensorType="integer" color="0xffff0000" summationName="Raw"/>
+ </display>
+</WorkSheet>

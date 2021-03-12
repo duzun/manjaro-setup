@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE KSysGuardWorkSheet>
+<WorkSheet columns="1" title="zerver Proc" interval="1" rows="1" locked="0">
+ <host name="zerver" port="-1" command="ssh -l icasa zerver ksysguardd" shell=""/>
+ <display row="0" showCommandLineOptions="0" units="1" column="0" class="ProcessController" normalizeCPUUsage="1" filterState="0" title="zerver Proc" showTooltips="1" hostName="zerver" ioUnits="1" treeViewHeader="AAAA/wAAAAAAAAABAAAAAAAAAAoBAAAAAAAAAAAAAAARgLMBAAAABwAAAA8AAABNAAAACAAAAE0AAAAJAAAATQAAAAcAAABNAAAAEAAAAE0AAAAMAAAATQAAAA0AAABNAAAHlgAAABEBAQABAAAAAAAAAAAAAAAATf////8AAACBAAAAAAAAABEAAAByAAAAAQAAAAAAAABNAAAAAQAAAAAAAAAsAAAAAQAAAAAAAAAtAAAAAQAAAAAAAABHAAAAAQAAAAAAAAA6AAAAAQAAAAAAAABKAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAABEAAAAAQAAAAAAAABZAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAUWAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAPoAAAABRY=" showTotals="1" unit="" sensorName="ps" columnSpan="1" version="7" ioInformation="2" sensorType="table" showUnit="0" rowSpan="1"/>
+</WorkSheet>

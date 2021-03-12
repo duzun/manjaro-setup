@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE KSysGuardWorkSheet>
+<WorkSheet rows="7" locked="0" interval="1" title="zerver SysLoad" columns="2">
+ <host shell="" command="ssh -l icasa zerver ksysguardd" port="-1" name="zerver"/>
+ <display svgBackground="" title="CPU History" labels="1" fontSize="8" rowSpan="2" vLines="0" stacked="0" vDistance="30" vScroll="0" class="FancyPlotter" unit="" columnSpan="2" version="1" autoRange="1" hLines="1" hScale="6" column="0" manualRange="0" row="0" showUnit="0">
+  <beam sensorType="float" sensorName="cpu/system/TotalLoad" hostName="zerver" color="0x88000000"/>
+  <beam sensorType="float" hostName="zerver" regexpSensorName="cpu/cpu.*/TotalLoad" color="0xffff8000,0xffe20800,0xfff3c300,0xffff0000,0xff00a900,0xff0028a9,0xffa92928,0xff28a929,0xffa9bd7d,0xff7dbdbd,0xffbdfdbd,0xffbde7fd"/>
+ </display>
+ <display svgBackground="widgets/plot-background" title="Core Temperature" labels="1" fontSize="7" rowSpan="1" vLines="1" stacked="0" vDistance="30" vScroll="0" class="FancyPlotter" max="100" unit="" columnSpan="2" version="1" autoRange="1" hLines="1" hScale="4" column="0" manualRange="1" min="0" row="2" showUnit="0">
+  <beam sensorType="integer" sensorName="acpi/Thermal_Zone/2-x86_pkg_temp/Temperature" hostName="zerver" color="0xff000000"/>
+  <beam sensorType="float" hostName="zerver" regexpSensorName="lmsensors/coretemp-isa-\d+/Core_\d+" color="0xffff8000,0xffe20800,0xfff3c300,0xffff0000,0xff0028a9,0xffa92928"/>
+ </display>
+ <display svgBackground="" title="Mem, Cache &amp; Swap" labels="1" fontSize="8" rowSpan="2" vLines="0" stacked="0" vDistance="30" vScroll="0" class="FancyPlotter" unit="" columnSpan="1" version="1" autoRange="1" hLines="1" hScale="6" column="0" manualRange="0" row="3" showUnit="0">
+  <beam sensorType="integer" sensorName="mem/physical/application" hostName="zerver" color="0xffff0000"/>
+  <beam sensorType="integer" sensorName="mem/swap/used" hostName="zerver" color="0xff00ff00"/>
+  <beam sensorType="integer" sensorName="mem/physical/buf" hostName="zerver" color="0xff786b3d"/>
+  <beam sensorType="integer" sensorName="mem/physical/cached" hostName="zerver" color="0xff6c4e4e"/>
+ </display>
+ <display svgBackground="widgets/plot-background" title="Disk R/W" labels="1" fontSize="8" rowSpan="2" vLines="1" stacked="0" vDistance="30" vScroll="1" class="FancyPlotter" unit="" columnSpan="1" version="1" autoRange="1" hLines="1" hScale="3" column="1" manualRange="0" row="3" showUnit="0">
+  <beam summationName="Reads" sensorType="float" hostName="zerver" regexpSensorName="disk/(nvme(\d+|\d+n\d+)|sd[a-z]+|mmcblk\d+|vda\d*)_.*/Rate/rblk" color="0xff0057ae"/>
+  <beam summationName="Writes" sensorType="float" hostName="zerver" regexpSensorName="disk/(nvme(\d+|\d+n\d+)|sd[a-z]+|mmcblk\d+|vda\d*)_.*/Rate/wblk" color="0xffe20800"/>
+ </display>
+ <display svgBackground="" title="Network History" labels="1" fontSize="8" rowSpan="2" vLines="0" stacked="0" vDistance="30" vScroll="0" class="FancyPlotter" unit="" columnSpan="1" version="1" autoRange="1" hLines="1" hScale="6" column="0" manualRange="0" row="5" showUnit="0">
+  <beam summationName="Receiving" sensorType="float" hostName="zerver" regexpSensorName="network/interfaces/(?!lo|veth|bridge|usbus|bond|docker|br\-).*/receiver/data" color="0xff0057ae"/>
+  <beam summationName="Sending" sensorType="float" hostName="zerver" regexpSensorName="network/interfaces/(?!lo|veth|bridge|usbus|bond|docker|br\-).*/transmitter/data" color="0xffe20800"/>
+ </display>
+ <display svgBackground="widgets/plot-background" title="Sockets" labels="1" fontSize="8" rowSpan="2" vLines="1" stacked="0" vDistance="30" vScroll="0" class="FancyPlotter" unit="" columnSpan="1" version="1" autoRange="1" hLines="1" hScale="3" column="1" manualRange="0" row="5" showUnit="0">
+  <beam summationName="UnixDomain" sensorType="integer" sensorName="network/sockets/unix/count" hostName="zerver" color="0xfff3c300"/>
+  <beam summationName="TCP" sensorType="integer" sensorName="network/sockets/tcp/count" hostName="zerver" color="0xff0057ae"/>
+  <beam summationName="UDP" sensorType="integer" sensorName="network/sockets/udp/count" hostName="zerver" color="0xffe20800"/>
+  <beam summationName="Raw" sensorType="integer" sensorName="network/sockets/raw/count" hostName="zerver" color="0xffff0000"/>
+ </display>
+</WorkSheet>

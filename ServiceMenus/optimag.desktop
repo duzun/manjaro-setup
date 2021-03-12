@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+MimeType=image/png;image/jpeg;
+Actions=Optimag
+
+[Desktop Action Optimag]
+Name=Optimag
+Exec=optimag "%U"
+Icon=utilities-terminal

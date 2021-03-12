@@ -1,0 +1,4 @@
+root 		-fstype=fuse,rw,nodev,idmap=user,allow_other,transform_symlinks,reconnect,max_read=65536,compression=yes,auto_cache,no_check_root,kernel_cache,IdentityFile=/home/duzun/.ssh/id_rsa 		:sshfs\#root@51.15.79.200\:/
+duzun_me 	-fstype=fuse,rw,nodev,uid=1000,gid=1000,allow_other,transform_symlinks,reconnect,max_read=65536,compression=yes,auto_cache,no_check_root,kernel_cache,IdentityFile=/home/duzun/.ssh/id_rsa 	:sshfs\#duzun_me@51.15.79.200\:/home/
+lll         -fstype=fuse,rw,nodev,uid=1000,gid=1000,allow_other,transform_symlinks,reconnect,max_read=65536,compression=yes,auto_cache,no_check_root,kernel_cache,IdentityFile=/home/duzun/.ssh/id_rsa  :sshfs\#lll@51.15.79.200\:/var/www/lll
+h   		-fstype=fuse,rw,nodev,uid=1000,gid=1000,allow_other,transform_symlinks,reconnect,max_read=65536,compression=yes,auto_cache,no_check_root,kernel_cache,IdentityFile=/home/duzun/.ssh/id_rsa 	:sshfs\#duzun@h.duzun.me\:/home

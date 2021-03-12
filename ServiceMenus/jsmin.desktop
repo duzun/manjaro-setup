@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Service
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+MimeType=text/javascript;
+Actions=JSMin
+
+[Desktop Action JSMin]
+Name=JS Min
+Exec=jsmin "%U"
+Icon=js

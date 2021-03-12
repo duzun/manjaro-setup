@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE KSysGuardWorkSheet>
+<WorkSheet interval="1" title="duzun.me Proc" rows="1" columns="1" locked="0">
+ <host shell="" command="ssh -l root ssh.duzun.me ksysguardd" port="-1" name="duzun.me"/>
+ <display columnSpan="1" title="duzun.me Proc" sensorName="ps" row="0" showUnit="0" class="ProcessController" ioInformation="2" ioUnits="1" hostName="duzun.me" filterState="0" version="7" treeViewHeader="AAAA/wAAAAAAAAABAAAAAAAAAAoBAAAAAAAAAAAAAAARkLMBAAAACAAAAAcAAABkAAAABAAAAGQAAAAIAAAAZAAAAAkAAABkAAAADwAAAGQAAAAMAAAAZAAAAA0AAABkAAAAEAAAAGQAAAkIAAAAEQEBAAEAAAAAAAAAAAAAAABk/////wAAAIEAAAAAAAAAEQAAAGQAAAABAAAAAAAAAGQAAAABAAAAAAAAADMAAAABAAAAAAAAADMAAAABAAAAAAAAAAAAAAABAAAAAAAAAEQAAAABAAAAAAAAAFgAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAAFIAAAABAAAAAAAAAGwAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAABoAAAAABAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAAA+gAAAAGgA==" column="0" unit="" showCommandLineOptions="0" rowSpan="1" sensorType="table" units="1" showTotals="1" normalizeCPUUsage="1" showTooltips="1"/>
+</WorkSheet>

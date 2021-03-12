@@ -1,0 +1,3 @@
+master 	-fstype=fuse,rw,nodev,idmap=user,allow_other,transform_symlinks,reconnect,max_read=65536,compression=yes,auto_cache,no_check_root,kernel_cache,IdentityFile=/home/duzun/.ssh/id_rsa 		:sshfs\#master@ssh.icasa.ru\:/
+icasa 	-fstype=fuse,rw,nodev,uid=1000,gid=1000,allow_other,transform_symlinks,reconnect,max_read=65536,compression=yes,auto_cache,no_check_root,kernel_cache,IdentityFile=/home/duzun/.ssh/id_rsa 	:sshfs\#icasa@ssh.icasa.ru\:/var/www/icasa/ssd
+artcer 	-fstype=fuse,rw,nodev,uid=1000,gid=1000,allow_other,transform_symlinks,reconnect,max_read=65536,compression=yes,auto_cache,no_check_root,kernel_cache,IdentityFile=/home/duzun/.ssh/id_rsa 	:sshfs\#casadelux@ssh.icasa.ru\:/var/www/casadelux/data/www/artcer.ru
