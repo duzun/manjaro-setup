@@ -56,6 +56,8 @@ $_i_ lshw # list hardware
 $_i_ nmap
 $_i_ mtr
 
+$_i_ ufw # firewall
+
 # Modern HTTP benchmarking tool (aka ab): https://github.com/wg/wrk
 $_i_ wrk
 

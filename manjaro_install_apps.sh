@@ -73,7 +73,8 @@ fi
 $_i_ redshift
 $_i_ synergy
 $_i_ dropbox
-$_i_ odrive-bin # Google Drive client on Electron
+$_i_ speedcrunch # advanced calculator
+# $_i_ odrive-bin # Google Drive client on Electron
 $_i_ kde-servicemenus-dropbox
 $_i_ yandex-disk
 $_i_ yandex-disk-indicator
@@ -239,6 +240,8 @@ $_i_ fslint
 # google-chrome-stable http://localhost:8888 &
 
 $_i_ qbittorrent
+
+$_i_ gufw # GUI for ufw
 
 # Like krunner
 $_i_ rofi
