@@ -70,8 +70,8 @@ EOF
 chmod +x "$f"
 fi
 
-$_i_ redshift
-$_i_ synergy
+# $_i_ redshift # not required any more, see "Night Mode" in settings
+$_i_ synergy1-bin
 $_i_ dropbox
 $_i_ speedcrunch # advanced calculator
 # $_i_ odrive-bin # Google Drive client on Electron
@@ -109,7 +109,7 @@ $_i_ pamac-gtk
 # $_i_ pamac-tray-appindicator # Tray icon using appindicator which feets better in KDE
 $_i_ krita # photo editor
 $_i_ blender # video editor
-$_i_ xnviewmp # photo viewer
+# $_i_ xnviewmp # photo viewer
 $_i_ kodi # video player
 $_i_ clementine # audio player
 # $_i_ kodi-addon-stream
@@ -183,13 +183,22 @@ fi
 
 $_i_ notepadqq # like notepad++
 
+$_i_ vscodium-bin
+
+[ -d ~/.config/VSCodium/User ]
+if [ -d ~/Dropbox/config/VSCodium/User/ ];
+then
+	ln -sf ~/Dropbox/config/VSCodium/User ~/.config/VSCodium/
+fi
+
+
 $_i_ sublime-text-dev
 sudo ln -sf /opt/sublime_text_3/sublime_text /usr/bin/subl
 
 [ -d ~/.config/sublime-text-3/Packages/User ]
-if [ -d ~/Dropbox/Sync/\$Settings/AppData/Sublime/User/ ];
+if [ -d ~/Dropbox/config/Sublime/User/ ];
 then
-	ln -sf ~/Dropbox/Sync/\$Settings/AppData/Sublime/User/ ~/.config/sublime-text-3/Packages/
+	ln -sf ~/Dropbox/config/Sublime/User ~/.config/sublime-text-3/Packages/
 fi
 
 # File & Sync
@@ -396,6 +405,7 @@ $_i_ doublecmd-gtk2-alpha-bin
 $_i_ sddm-config-editor-git
 $_i_ kazam
 $_i_ flameshot
+$_i_ obs-studio # screen recording/streaming
 
 #$_i_ winscp
 $_i_ playonlinux

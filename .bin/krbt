@@ -1,0 +1,12 @@
+#!/bin/dash
+
+if [ ! -z "$1" ]; then
+	ver=$1;
+	imgname=/boot/initramfs-$ver-x86_64.img
+	krnname=/boot/vmlinuz-$ver-x86_64
+else
+	imgname=$(ls /boot/initr*.img* | grep -v fallback | sort -rV | head -1)
+	krnname=$(ls /boot/vmlinuz-* | sort -rV | head -1)
+fi
+
+exec kexec --type=bzImage --reuse-cmdline --initrd=$imgname $krnname

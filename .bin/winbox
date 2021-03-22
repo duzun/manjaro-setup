@@ -1,0 +1,60 @@
+#!/bin/sh
+
+_winbox_url='https://download.mikrotik.com/routeros/winbox/latest/winbox.exe'
+_winbox_desktop=~/.local/share/applications/winbox.desktop
+_winbox="$(dirname "$0")/winbox.exe"
+_winbox_need_update=
+
+[ -f "$_winbox" ] || _winbox="/opt/winbox.exe";
+[ -f "$_winbox" ] || _winbox="$(realpath ./winbox.exe)";
+[ -f "$_winbox" ] || _winbox=~/winbox.exe;
+
+down() {
+	if command -v curl > /dev/null; then
+		curl -sS "$1" > "$2"
+	else
+		wget -qO "$2" "$1"
+	fi
+}
+
+if [ "$1" = "-u" ] || [ "$1" = "--update" ]; then
+	_winbox_need_update=$1
+	shift
+elif [ ! -f "$_winbox" ]; then
+	_winbox_need_update="$_winbox"
+fi
+
+if [ -n "$_winbox_need_update" ] ; then
+	echo "" > /tmp/winbox.exe
+	down "$_winbox_url" /tmp/winbox.exe
+
+	if [ -s /tmp/winbox.exe ]; then
+		command -v upx > /dev/null && upx /tmp/winbox.exe
+		mv -f -- /tmp/winbox.exe "$_winbox" && \
+		echo "Successfully updated winbox.exe"
+	fi
+fi
+
+if [ -f "$_winbox" ]; then
+	if [ -d "$(dirname "$_winbox_desktop")" ] && [ ! -f "$_winbox_desktop" ]; then
+		_wb_ico=~/.local/share/icons/winbox.png
+		cat << EOF | tee "$_winbox_desktop" > /dev/null
+[Desktop Entry]
+Encoding=UTF-8
+Exec=/usr/bin/env wine "$_winbox"
+Icon=$_wb_ico
+Name=WinBox
+StartupNotify=true
+Terminal=false
+Type=Application
+EOF
+		if [ ! -f "$_wb_ico" ]; then
+			{ down "http://v.s.cz/img/deb/winbox.png" "$_wb_ico" && optimag "$_wb_ico" > /dev/null; } &
+		fi
+	fi
+
+	echo "Found: $_winbox"
+	wine "$_winbox" "$@"
+else
+	>&2 echo "Error: winbox.exe not found :/"
+fi
