@@ -73,9 +73,9 @@ fi
 # $_i_ redshift # not required any more, see "Night Mode" in settings
 $_i_ synergy1-bin
 $_i_ dropbox
+$_i_ kde-servicemenus-dropbox
 $_i_ speedcrunch # advanced calculator
 # $_i_ odrive-bin # Google Drive client on Electron
-$_i_ kde-servicemenus-dropbox
 $_i_ yandex-disk
 $_i_ yandex-disk-indicator
 $_i_ google-chrome
@@ -95,24 +95,24 @@ sudo systemctl start autofs
 
 $_i_ etcher # write ISO to USB-Storage
 $_i_ open-fuse-iso
-$_i_ gparted
-$_i_ kdiskmark
+$_i_ gparted # alternative to KDE Partition Manager
+$_i_ kdiskmark # Measure storage read/write performance
 
 $_i_ diffuse
 $_i_ kdiff3
 $_i_ terminator
-$_i_ xorg-xkill
+$_i_ xorg-xkill # xkill any window app
 
 $_i_ plasma5-applets-caffeine-plus # Prevents the desktop becoming idle in full-screen mode
 $_i_ wmctrl # Window control utility
-$_i_ pamac-gtk
+# $_i_ pamac-gtk # this is now the default GUI package manager
 # $_i_ pamac-tray-appindicator # Tray icon using appindicator which feets better in KDE
 $_i_ krita # photo editor
 $_i_ blender # video editor
 # $_i_ xnviewmp # photo viewer
 $_i_ kodi # video player
-$_i_ clementine # audio player
 # $_i_ kodi-addon-stream
+$_i_ clementine # audio player
 
 # Install a hook for minidlna
 _sed_=$(command -v sed)
@@ -406,6 +406,7 @@ $_i_ sddm-config-editor-git
 $_i_ kazam
 $_i_ flameshot
 $_i_ obs-studio # screen recording/streaming
+$_i_ kcolorchooser
 
 #$_i_ winscp
 $_i_ playonlinux
