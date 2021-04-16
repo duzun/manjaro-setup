@@ -406,6 +406,7 @@ $_i_ sddm-config-editor-git
 $_i_ kazam
 $_i_ flameshot
 $_i_ obs-studio # screen recording/streaming
+$_i_ screenkey # show keystrokes on the screen
 $_i_ kcolorchooser
 
 #$_i_ winscp
