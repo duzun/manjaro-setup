@@ -89,3 +89,5 @@ $_i_ jdupes # jdupes -B -S -r /btrfs/mount/point
 $_i_ duperemove # duperemove -dhr --hashfile=/var/cache/hdd.duphash /btrfs/mount/point
 
 $_i_ exa # aka ls
+
+$_i_ broot # Fuzzy Search + tree + cd
