@@ -93,6 +93,9 @@ $_i_ global
 # sudo mysql_secure_installation
 
 
+mkdir -p ~/Applications && wget -O ~/Applications/dbgate.AppImage https://github.com/dbgate/dbgate/releases/latest/download/dbgate-latest.AppImage && chmod +x ~/Applications/dbgate.AppImage
+
+$_i_ sqlitebrowser
 $_i_ mysql-workbench
 $_i_ adminer
 $_i_ phpmyadmin
