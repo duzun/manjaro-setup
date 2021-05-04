@@ -55,6 +55,9 @@ sudo sed -i "s/PrivateTmp=true/PrivateTmp=false/g" $f;
 sudo systemctl enable php-fpm
 sudo systemctl start php-fpm
 
+# alternative to nvm
+curl https://get.volta.sh | bash
+
 $_i_ nodejs
 $_i_ npm
 
