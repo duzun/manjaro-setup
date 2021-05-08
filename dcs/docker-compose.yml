@@ -42,6 +42,7 @@ services:
     npm:
         image: "jc21/nginx-proxy-manager:latest"
         container_name: npm
+        restart: always
         ports:
             - "443:443"
             - "80:80"
@@ -71,6 +72,7 @@ services:
     npm_db:
         image: "jc21/mariadb-aria:latest"
         container_name: npm_db
+        restart: always
         environment:
             MYSQL_ROOT_PASSWORD: "npm"
             MYSQL_DATABASE: "npm"
