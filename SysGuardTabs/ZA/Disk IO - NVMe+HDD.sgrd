@@ -1,29 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE KSysGuardWorkSheet>
-<WorkSheet locked="1" rows="3" columns="2" title="Disk IO" interval="0.5">
- <host port="-1" name="localhost" shell="" command="ksysguardd"/>
- <display vDistance="30" vScroll="0" version="1" stacked="0" rowSpan="1" unit="" max="409600" row="0" labels="1" showUnit="0" hLines="1" min="0" svgBackground="" fontSize="8" vLines="1" columnSpan="1" manualRange="1" autoRange="1" title="NVMe R/W Data" hScale="4" class="FancyPlotter" column="0">
-  <beam hostName="localhost" sensorName="disk/nvme0n1_(259:0)/Rate/rblk" sensorType="float" color="0xff0057ae"/>
-  <beam hostName="localhost" sensorName="disk/nvme0n1_(259:0)/Rate/wblk" sensorType="float" color="0xffe20800"/>
+<WorkSheet title="Disk IO" columns="4" locked="1" rows="3" interval="0.5">
+ <host shell="" command="ksysguardd" port="-1" name="localhost"/>
+ <display manualRange="1" hScale="4" title="NVMe R/W Data" unit="" autoRange="1" version="1" fontSize="8" columnSpan="1" showUnit="0" vDistance="30" min="0" column="0" svgBackground="" class="FancyPlotter" hLines="1" vLines="1" stacked="0" vScroll="0" labels="1" rowSpan="1" max="409600" row="0">
+  <beam color="0xff0057ae" sensorName="disk/nvme0n1_(259:0)/Rate/rblk" hostName="localhost" sensorType="float"/>
+  <beam color="0xffe20800" sensorName="disk/nvme0n1_(259:0)/Rate/wblk" hostName="localhost" sensorType="float"/>
  </display>
- <display vDistance="30" vScroll="0" version="1" stacked="0" rowSpan="1" unit="" row="2" labels="1" showUnit="0" hLines="1" svgBackground="" fontSize="8" vLines="1" columnSpan="1" manualRange="0" autoRange="1" title="NVMe Milliseconds spent R/W" hScale="4" class="FancyPlotter" column="0">
-  <beam hostName="localhost" sensorName="disk/nvme0n1_(259:0)/Delta/rtim" sensorType="integer" color="0xff0057ae"/>
-  <beam hostName="localhost" sensorName="disk/nvme0n1_(259:0)/Delta/wtim" sensorType="integer" color="0xffe20800"/>
+ <display manualRange="0" hScale="4" title="NVMe Milliseconds spent R/W" unit="" autoRange="1" version="1" fontSize="8" columnSpan="1" showUnit="0" vDistance="30" column="0" svgBackground="" class="FancyPlotter" hLines="1" vLines="1" stacked="0" vScroll="0" labels="1" rowSpan="1" row="2">
+  <beam color="0xff0057ae" sensorName="disk/nvme0n1_(259:0)/Delta/rtim" hostName="localhost" sensorType="integer"/>
+  <beam color="0xffe20800" sensorName="disk/nvme0n1_(259:0)/Delta/wtim" hostName="localhost" sensorType="integer"/>
  </display>
- <display vDistance="30" vScroll="0" version="1" stacked="1" rowSpan="1" unit="" row="1" labels="1" showUnit="0" hLines="1" svgBackground="" fontSize="8" vLines="1" columnSpan="1" manualRange="0" autoRange="1" title="NVMe R/W Accesses" hScale="4" class="FancyPlotter" column="0">
-  <beam hostName="localhost" sensorName="disk/nvme0n1_(259:0)/Rate/rio" sensorType="float" color="0xff0057ae"/>
-  <beam hostName="localhost" sensorName="disk/nvme0n1_(259:0)/Rate/wio" sensorType="float" color="0xffe20800"/>
+ <display manualRange="0" hScale="4" title="NVMe R/W Accesses" unit="" autoRange="1" version="1" fontSize="8" columnSpan="1" showUnit="0" vDistance="30" column="0" svgBackground="" class="FancyPlotter" hLines="1" vLines="1" stacked="1" vScroll="0" labels="1" rowSpan="1" row="1">
+  <beam color="0xff0057ae" sensorName="disk/nvme0n1_(259:0)/Rate/rio" hostName="localhost" sensorType="float"/>
+  <beam color="0xffe20800" sensorName="disk/nvme0n1_(259:0)/Rate/wio" hostName="localhost" sensorType="float"/>
  </display>
- <display vDistance="30" vScroll="0" version="1" stacked="0" rowSpan="1" unit="" max="122880" row="0" labels="1" showUnit="0" hLines="1" min="0" svgBackground="" fontSize="8" vLines="1" columnSpan="1" manualRange="1" autoRange="1" title="HDD R/W Data" hScale="4" class="FancyPlotter" column="1">
-  <beam hostName="localhost" sensorName="disk/sda_(8:0)/Rate/rblk" sensorType="float" color="0xff0057ae"/>
-  <beam hostName="localhost" sensorName="disk/sda_(8:0)/Rate/wblk" sensorType="float" color="0xffe20800"/>
+ <display manualRange="1" hScale="4" title="SSD R/W Data" unit="" autoRange="1" version="1" fontSize="8" columnSpan="1" showUnit="0" vDistance="30" min="0" column="1" svgBackground="" class="FancyPlotter" hLines="1" vLines="1" stacked="0" vScroll="0" labels="1" rowSpan="1" max="122880" row="0">
+  <beam color="0xff0057ae" sensorName="disk/sda_(8:0)/Rate/rblk" hostName="localhost" sensorType="float"/>
+  <beam color="0xffe20800" sensorName="disk/sda_(8:0)/Rate/wblk" hostName="localhost" sensorType="float"/>
  </display>
- <display vDistance="30" vScroll="0" version="1" stacked="1" rowSpan="1" unit="" row="1" labels="1" showUnit="0" hLines="1" svgBackground="" fontSize="8" vLines="1" columnSpan="1" manualRange="0" autoRange="1" title="HDD R/W Accesses" hScale="4" class="FancyPlotter" column="1">
-  <beam hostName="localhost" sensorName="disk/sda_(8:0)/Rate/rio" sensorType="float" color="0xff0057ae"/>
-  <beam hostName="localhost" sensorName="disk/sda_(8:0)/Rate/wio" sensorType="float" color="0xffe20800"/>
+ <display manualRange="0" hScale="4" title="SSD R/W Accesses" unit="" autoRange="1" version="1" fontSize="8" columnSpan="1" showUnit="0" vDistance="30" column="1" svgBackground="" class="FancyPlotter" hLines="1" vLines="1" stacked="1" vScroll="0" labels="1" rowSpan="1" row="1">
+  <beam color="0xff0057ae" sensorName="disk/sda_(8:0)/Rate/rio" hostName="localhost" sensorType="float"/>
+  <beam color="0xffe20800" sensorName="disk/sda_(8:0)/Rate/wio" hostName="localhost" sensorType="float"/>
  </display>
- <display vDistance="30" vScroll="0" version="1" stacked="0" rowSpan="1" unit="" row="2" labels="1" showUnit="0" hLines="1" svgBackground="" fontSize="8" vLines="1" columnSpan="1" manualRange="0" autoRange="1" title="HDD Milliseconds spent reading" hScale="4" class="FancyPlotter" column="1">
-  <beam hostName="localhost" sensorName="disk/sda_(8:0)/Delta/rtim" sensorType="integer" color="0xff0057ae"/>
-  <beam hostName="localhost" sensorName="disk/sda_(8:0)/Delta/wtim" sensorType="integer" color="0xffe20800"/>
+ <display manualRange="0" hScale="4" title="SSD Milliseconds spent reading" unit="" autoRange="1" version="1" fontSize="8" columnSpan="1" showUnit="0" vDistance="30" column="1" svgBackground="" class="FancyPlotter" hLines="1" vLines="1" stacked="0" vScroll="0" labels="1" rowSpan="1" row="2">
+  <beam color="0xff0057ae" sensorName="disk/sda_(8:0)/Delta/rtim" hostName="localhost" sensorType="integer"/>
+  <beam color="0xffe20800" sensorName="disk/sda_(8:0)/Delta/wtim" hostName="localhost" sensorType="integer"/>
+ </display>
+ <display manualRange="1" hScale="4" title="HDD-Red R/W Data" unit="" autoRange="1" version="1" fontSize="8" columnSpan="1" showUnit="0" vDistance="30" min="0" column="2" svgBackground="" class="FancyPlotter" hLines="1" vLines="1" stacked="0" vScroll="0" labels="1" rowSpan="1" max="122880" row="0">
+  <beam color="0xff0057ae" sensorName="disk/sdb_(8:16)/Rate/rblk" hostName="localhost" sensorType="float"/>
+  <beam color="0xffe20800" sensorName="disk/sdb_(8:16)/Rate/wblk" hostName="localhost" sensorType="float"/>
+ </display>
+ <display manualRange="0" hScale="4" title="HDD-Red R/W Accesses" unit="" autoRange="1" version="1" fontSize="8" columnSpan="1" showUnit="0" vDistance="30" column="2" svgBackground="" class="FancyPlotter" hLines="1" vLines="1" stacked="1" vScroll="0" labels="1" rowSpan="1" row="1">
+  <beam color="0xff0057ae" sensorName="disk/sdb_(8:16)/Rate/rio" hostName="localhost" sensorType="float"/>
+  <beam color="0xffe20800" sensorName="disk/sdb_(8:16)/Rate/wio" hostName="localhost" sensorType="float"/>
+ </display>
+ <display manualRange="0" hScale="4" title="HDD-Red Milliseconds spent reading" unit="" autoRange="1" version="1" fontSize="8" columnSpan="1" showUnit="0" vDistance="30" column="2" svgBackground="" class="FancyPlotter" hLines="1" vLines="1" stacked="0" vScroll="0" labels="1" rowSpan="1" row="2">
+  <beam color="0xff0057ae" sensorName="disk/sdb_(8:16)/Delta/rtim" hostName="localhost" sensorType="integer"/>
+  <beam color="0xffe20800" sensorName="disk/sdb_(8:16)/Delta/wtim" hostName="localhost" sensorType="integer"/>
+ </display>
+ <display manualRange="1" hScale="4" title="HDD-Purple R/W Data" unit="" autoRange="1" version="1" fontSize="8" columnSpan="1" showUnit="0" vDistance="30" min="0" column="3" svgBackground="" class="FancyPlotter" hLines="1" vLines="1" stacked="0" vScroll="0" labels="1" rowSpan="1" max="122880" row="0">
+  <beam color="0xff0057ae" sensorName="disk/sdc_(8:32)/Rate/rblk" hostName="localhost" sensorType="float"/>
+  <beam color="0xffe20800" sensorName="disk/sdc_(8:32)/Rate/wblk" hostName="localhost" sensorType="float"/>
+ </display>
+ <display manualRange="0" hScale="4" title="HDD-Purple R/W Accesses" unit="" autoRange="1" version="1" fontSize="8" columnSpan="1" showUnit="0" vDistance="30" column="3" svgBackground="" class="FancyPlotter" hLines="1" vLines="1" stacked="1" vScroll="0" labels="1" rowSpan="1" row="1">
+  <beam color="0xff0057ae" sensorName="disk/sdc_(8:32)/Rate/rio" hostName="localhost" sensorType="float"/>
+  <beam color="0xffe20800" sensorName="disk/sdc_(8:32)/Rate/wio" hostName="localhost" sensorType="float"/>
+ </display>
+ <display manualRange="0" hScale="4" title="HDD-Purple Milliseconds spent reading" unit="" autoRange="1" version="1" fontSize="8" columnSpan="1" showUnit="0" vDistance="30" column="3" svgBackground="" class="FancyPlotter" hLines="1" vLines="1" stacked="0" vScroll="0" labels="1" rowSpan="1" row="2">
+  <beam color="0xff0057ae" sensorName="disk/sdc_(8:32)/Delta/rtim" hostName="localhost" sensorType="integer"/>
+  <beam color="0xffe20800" sensorName="disk/sdc_(8:32)/Delta/wtim" hostName="localhost" sensorType="integer"/>
  </display>
 </WorkSheet>
