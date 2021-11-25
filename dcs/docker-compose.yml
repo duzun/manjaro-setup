@@ -39,6 +39,7 @@ services:
             - /var/run/docker.sock:/var/run/docker.sock
         networks:
             - traefik
+
     npm:
         image: "jc21/nginx-proxy-manager:latest"
         container_name: npm
@@ -69,6 +70,7 @@ services:
             target: /etc/letsencrypt
         networks:
             - traefik
+
     npm_db:
         image: "jc21/mariadb-aria:latest"
         container_name: npm_db
@@ -84,6 +86,7 @@ services:
             target: /var/lib/mysql
         networks:
             - traefik
+
     portainer:
         image: portainer/portainer
         container_name: portainer

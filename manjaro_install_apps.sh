@@ -55,19 +55,10 @@ grep "/.bash_git" ~/.bashrc || {
 
 # Unlock id_rsa key with KWallet
 f=~/.config/autostart-scripts/ssh-add.sh
-if [ ! -f "$f" ];
+if [ ! -s "$f" ] && [ -s "$_d_/autostart-scripts/ssh-add.sh" ];
 then
-cat > "$f" << EOF
-#!/bin/sh
-ssh-add < /dev/null
-
-# Tip: The above ssh-add.sh script will only add the default key ~/.ssh/id_rsa.
-# Assuming you have different SSH keys named key1, key2, key3 in ~/.ssh/,
-# you may add them automatically on login by changing the above script to:
-#
-# ssh-add $HOME/.ssh/key1 $HOME/.ssh/key2 $HOME/.ssh/key3 </dev/null
-EOF
-chmod +x "$f"
+    cat "$_d_/autostart-scripts/ssh-add.sh" > "$f"
+    chmod +x "$f"
 fi
 
 # $_i_ redshift # not required any more, see "Night Mode" in settings
@@ -142,22 +133,13 @@ $_i_ clamtk # GUI for clamav
 # Fast reboot
 $_i_ dash
 $_i_ kexec-tools
-cat > ~/.bin/krbt << EOF
-#!/bin/dash
 
-if [ ! -z "\$1" ]; then
-	ver=\$1;
-	imgname=/boot/initramfs-\$ver-x86_64.img
-	krnname=/boot/vmlinuz-\$ver-x86_64
-else
-	imgname=\$(ls /boot/initramfs-*.img | grep -v fallback | sort -rV | head -1)
-	krnname=\$(ls /boot/vmlinuz-* | sort -rV | head -1)
+f=~/.bin/krbt
+if [ ! -s "$f" ] && [ -s "$_d_/.bin/krbt" ];
+then
+    cat "$_d_/.bin/krbt" > "$f"
+    chmod +x "$f"
 fi
-
-exec kexec --type=bzImage --reuse-cmdline --initrd=\$imgname \$krnname
-
-EOF
-chmod +x ~/.bin/krbt
 
 # # https://wiki.archlinux.org/index.php/PPTP_Client
 # $_i_ pptpclient
@@ -206,33 +188,10 @@ $_i_ syncthing-gtk
 
 # Start syncthing delayed
 f=~/.config/autostart-scripts/syncthing-delayed.sh
-if [ ! -f "$f" ];
+if [ ! -s "$f" ] && [ -s "$_d_/autostart-scripts/syncthing-delayed.sh" ];
 then
-cat > "$f" << EOF
-#!/bin/bash
-
-_start_time_=\$(date +%s);
-
-cpuload_percent() {
-    local cpus
-    local load;
-    cpus=\$(lscpu | grep ^'CPU(s):' | cut -d':' -f 2)
-    load=\$(uptime | cut -d',' -f 3 | cut -d':' -f 2)
-    bc -l <<< "\$load / \$cpus * 100" | cut -d'.' -f 1
-}
-
-sleep 10
-while ! ps -C syncthing > /dev/null; do
-    if [ "\$(cpuload_percent)" -lt "29" ]; then
-        echo "syncthing started after \$(( \$(date +%s) - _start_time_ ))s" >> /tmp/syncthing.log
-        systemctl --user start syncthing
-        break;
-    fi
-    sleep 3
-done
-
-EOF
-chmod +x "$f"
+    cat "$_d_/autostart-scripts/syncthing-delayed.sh" > "$f"
+    chmod +x "$f"
 fi
 
 # systemctl enable --user syncthing

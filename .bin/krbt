@@ -1,9 +1,10 @@
 #!/bin/dash
 
+arch=$(uname -m)
 if [ ! -z "$1" ]; then
 	ver=$1;
-	imgname=/boot/initramfs-$ver-x86_64.img
-	krnname=/boot/vmlinuz-$ver-x86_64
+	imgname=/boot/initramfs-$ver-$arch.img
+	krnname=/boot/vmlinuz-$ver-$arch
 else
 	imgname=$(ls /boot/initr*.img* | grep -v fallback | sort -rV | head -1)
 	krnname=$(ls /boot/vmlinuz-* | sort -rV | head -1)
