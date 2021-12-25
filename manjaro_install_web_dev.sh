@@ -5,6 +5,10 @@
 # @author Dumitru Uzun (DUzun.me)
 #
 
+if ! pacman -Qi fakeroot > /dev/null; then
+    sudo pacman -Sq base-devel
+fi
+
 if ! command -v yay > /dev/null; then
     sudo pacman -Sq yay
 fi
@@ -25,7 +29,7 @@ $_i_ docker-compose
 sudo usermod -a -G docker "$(whoami)"
 
 # Use OverlayFS2 - not sure it is necessary, as docker would start to use it by default
-[ -s /etc/docker/daemon.json ] || echo '{ "storage-driver": "overlay2" }' > /etc/docker/daemon.json
+# [ -s /etc/docker/daemon.json ] || echo '{ "storage-driver": "overlay2" }' > /etc/docker/daemon.json
 
 sudo systemctl enable docker
 sudo systemctl start docker
@@ -37,23 +41,23 @@ sudo systemctl start nginx
 
 $_i_ php-fpm
 $_i_ php-intl
-$_i_ php-gd
-$_i_ php-xsl
-$_i_ php-odbc
-$_i_ php-tidy
-$_i_ php-mcrypt
-$_i_ php-imap
-$_i_ php-sqlite
-$_i_ php-gmagick
-$_i_ php-geoip
-# $_i_ php-mbstring
-$_i_ php-imagick
+# $_i_ php-gd
+# $_i_ php-xsl
+# $_i_ php-odbc
+# $_i_ php-tidy
+# $_i_ php-mcrypt
+# $_i_ php-imap
+# $_i_ php-sqlite
+# $_i_ php-gmagick
+# $_i_ php-geoip
+# # $_i_ php-mbstring
+# $_i_ php-imagick
 
 f=/usr/lib/systemd/system/php-fpm.service
 sudo sed -i "s/PrivateTmp=true/PrivateTmp=false/g" $f;
 
-sudo systemctl enable php-fpm
-sudo systemctl start php-fpm
+# sudo systemctl enable php-fpm
+# sudo systemctl start php-fpm
 
 # alternative to nvm
 curl https://get.volta.sh | bash
@@ -138,7 +142,11 @@ echo 127.0.0.1 pma.lh | sudo tee -a /etc/hosts > /dev/null
 # GRANT SELECT, INSERT, UPDATE, DELETE ON phpmyadmin.* TO 'pma'@'localhost';
 # EOF
 
-sudo subl /etc/webapps/phpmyadmin/config.inc.php
+if [ -z "$EDITOR" ]; then
+    EDITOR=subl
+fi
+
+sudo $EDITOR /etc/webapps/phpmyadmin/config.inc.php
 
 $_i_ composer
 

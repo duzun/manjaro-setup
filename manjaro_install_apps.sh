@@ -9,6 +9,10 @@
 # @author Dumitru Uzun (DUzun.me)
 #
 
+if ! pacman -Qi fakeroot > /dev/null; then
+    sudo pacman -Sq base-devel
+fi
+
 if ! command -v yay > /dev/null; then
     sudo pacman -Sq yay
 fi
@@ -63,13 +67,18 @@ fi
 
 # $_i_ redshift # not required any more, see "Night Mode" in settings
 $_i_ synergy1-bin
-$_i_ dropbox
-$_i_ kde-servicemenus-dropbox
+# $_i_ dropbox
+# $_i_ kde-servicemenus-dropbox
+
+# Create an account at https://e.pcloud.com/#page=register&invite=BOUkZ4oWYRy
+$_i_ pcloud-drive # pCloud drive client on Electron
+
 $_i_ speedcrunch # advanced calculator
 # $_i_ odrive-bin # Google Drive client on Electron
-$_i_ yandex-disk
-$_i_ yandex-disk-indicator
-$_i_ google-chrome
+# $_i_ yandex-disk
+# $_i_ yandex-disk-indicator
+$_i_ brave-browser
+# $_i_ google-chrome
 
 # https://chrome.google.com/webstore/detail/plasma-integration/cimiefiiaegbelhefglklhhakcgmhkai
 # https://addons.mozilla.org/en-US/firefox/addon/plasma-integration/
@@ -90,6 +99,7 @@ $_i_ gparted # alternative to KDE Partition Manager
 $_i_ kdiskmark # Measure storage read/write performance
 
 $_i_ diffuse
+$_i_ meld
 $_i_ kdiff3
 $_i_ terminator
 $_i_ xorg-xkill # xkill any window app
@@ -167,24 +177,24 @@ $_i_ notepadqq # like notepad++
 
 $_i_ vscodium-bin
 
-[ -d ~/.config/VSCodium/User ]
+# [ -d ~/.config/VSCodium/User ]
 if [ -d ~/Dropbox/config/VSCodium/User/ ];
 then
 	ln -sf ~/Dropbox/config/VSCodium/User ~/.config/VSCodium/
 fi
 
 
-$_i_ sublime-text-dev
-sudo ln -sf /opt/sublime_text_3/sublime_text /usr/bin/subl
+# $_i_ sublime-text-dev
+# sudo ln -sf /opt/sublime_text_3/sublime_text /usr/bin/subl
 
-[ -d ~/.config/sublime-text-3/Packages/User ]
+# [ -d ~/.config/sublime-text-3/Packages/User ]
 if [ -d ~/Dropbox/config/Sublime/User/ ];
 then
 	ln -sf ~/Dropbox/config/Sublime/User ~/.config/sublime-text-3/Packages/
 fi
 
 # File & Sync
-$_i_ syncthing-gtk
+$_i_ syncthing-gtk-python3
 
 # Start syncthing delayed
 f=~/.config/autostart-scripts/syncthing-delayed.sh
@@ -360,7 +370,7 @@ xrandr --output $x1 --primary --left-of $x2
 EOF
 fi | sudo tee -a $f > /dev/null
 
-$_i_ doublecmd-gtk2-alpha-bin
+$_i_ doublecmd-gtk2
 $_i_ sddm-config-editor-git
 $_i_ kazam
 $_i_ flameshot

@@ -5,6 +5,10 @@
 # @author Dumitru Uzun (DUzun.me)
 #
 
+if ! pacman -Qi fakeroot > /dev/null; then
+    sudo pacman -Sq base-devel
+fi
+
 if ! command -v yay > /dev/null; then
     sudo pacman -Sq yay
 fi
@@ -12,7 +16,7 @@ fi
 _i_='yay -S --noconfirm'
 # _d_=$(dirname "$0");
 
-$_i_ paru # alternative to yaourt
+$_i_ paru-bin # alternative to yaourt
 
 $_i_ bat # like `cat`
 $_i_ binwalk
@@ -87,6 +91,7 @@ $_i_ borg # backup + compression + dedup
 $_i_ borgmatic
 $_i_ jdupes # jdupes -B -S -r /btrfs/mount/point
 $_i_ duperemove # duperemove -dhr --hashfile=/var/cache/hdd.duphash /btrfs/mount/point
+$_i_ compsize
 
 $_i_ exa # aka ls
 
