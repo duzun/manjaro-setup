@@ -88,6 +88,9 @@ $_i_ sshfs
 $_i_ fuseiso
 $_i_ ifuse
 
+$_i_ cdemu-daemon
+$_i_ cdemu-client
+
 $_i_ autofs
 sudo cp -R "$_d_"/autofs/* /etc/autofs/
 sudo systemctl enable autofs
