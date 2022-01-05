@@ -115,8 +115,19 @@ $_i_ krita # photo editor
 $_i_ blender # video editor
 # $_i_ xnviewmp # photo viewer
 $_i_ kodi # video player
+$_i_ celluloid # video player
 # $_i_ kodi-addon-stream
 $_i_ clementine # audio player
+
+
+$_i_ kdegraphics-thumbnailers
+$_i_ raw-thumbnailer
+$_i_ raw-thumbnailer-entry
+$_i_ webp-thumbnailer
+# $_i_ ffmpegthumbnailer-mp3
+$_i_ exe-thumbnailer
+$_i_ appimage-thumbnailer-git
+# $_i_ jar-thumbnailer-git
 
 # Install a hook for minidlna
 _sed_=$(command -v sed)
