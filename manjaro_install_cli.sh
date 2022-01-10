@@ -52,6 +52,9 @@ $_i_ iftop
 $_i_ iptraf-ng
 $_i_ bind-tools
 $_i_ rclone
+$_i_ iputils # ping command
+$_i_ traceroute
+
 
 $_i_ ethtool # controll ethernet
 $_i_ lshw # list hardware
