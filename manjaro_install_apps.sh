@@ -65,6 +65,9 @@ then
     chmod +x "$f"
 fi
 
+# UI for systemctl
+$_i_ systemd-kcm
+
 # $_i_ redshift # not required any more, see "Night Mode" in settings
 $_i_ synergy1-bin
 # $_i_ dropbox
