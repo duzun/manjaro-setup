@@ -146,7 +146,13 @@ if [ -z "$EDITOR" ]; then
     EDITOR=subl
 fi
 
-sudo $EDITOR /etc/webapps/phpmyadmin/config.inc.php
+f=/etc/webapps/phpmyadmin/config.inc.php
+if grep -q "\$cfg\['blowfish_secret'\] = '';" "$f"; then
+    secret=$(head -c32 /dev/urandom | base64 | tr -d '=' | tr '+/' '-_')
+    sed -i "s/\$cfg\['blowfish_secret'\] = '';/\$cfg['blowfish_secret'] = '$secret';/; s/\$cfg\['Servers'\]\[\$i\]\['host'\] = 'localhost';/\$cfg['Servers'][\$i]['host'] = getenv('MYSQL_HOST') ?: 'localhost';\n\$port = getenv('MYSQL_PORT') and \$cfg['Servers'][\$i]['port'] = \$port;/" "$f"
+fi
+
+# sudo $EDITOR "$f"
 
 $_i_ composer
 
