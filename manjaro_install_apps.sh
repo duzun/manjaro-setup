@@ -121,6 +121,7 @@ $_i_ kodi # video player
 $_i_ celluloid # video player
 # $_i_ kodi-addon-stream
 $_i_ rhythmbox # audio player
+$_i_ rhythmbox-tray-icon # plugin for rhythmbox
 $_i_ clementine # audio player
 
 
