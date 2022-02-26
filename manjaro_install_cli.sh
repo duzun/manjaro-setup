@@ -33,6 +33,7 @@ $_i_ jq # JSON
 $_i_ htop
 $_i_ i7z # CPU Info
 $_i_ procs # aka ps
+$_i_ debtap # Convert .deb package for Arch
 
 # A collection of performance monitoring tools (iostat,isag,mpstat,pidstat,sadf,sar)
 $_i_ sysstat
@@ -81,13 +82,6 @@ $_i_ zip
 $_i_ brotli
 $_i_ pigz # parallel gzip
 
-# For fun
-$_i_ fortune-mod
-$_i_ cowsay
-$_i_ espeak # Text-2-Speach synthesizer
-# $_i_ aview # Image to ASCII converter
-
-
 # Disk
 # $_i_ ncdu # like `du`
 $_i_ borg # backup + compression + dedup
@@ -99,3 +93,9 @@ $_i_ compsize
 $_i_ exa # aka ls
 
 $_i_ broot # Fuzzy Search + tree + cd
+
+# For fun
+$_i_ fortune-mod
+$_i_ cowsay
+$_i_ espeak # Text-2-Speach synthesizer
+# $_i_ aview # Image to ASCII converter
