@@ -124,8 +124,10 @@ $_i_ rhythmbox # audio player
 $_i_ rhythmbox-tray-icon # plugin for rhythmbox
 $_i_ clementine # audio player
 
-
+$_i_ qt-heif-image-plugin # Open HEIC images in Gwenview
+# $_i_ qt5-avif-image-plugin # Open HEIC images in Gwenview, conflicts with kimageformats
 $_i_ kdegraphics-thumbnailers
+$_i_ heifthumbnailer
 $_i_ raw-thumbnailer
 $_i_ raw-thumbnailer-entry
 $_i_ webp-thumbnailer
