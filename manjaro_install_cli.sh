@@ -30,6 +30,7 @@ $_i_ ccat # Syntax Highliting cat
 $_i_ traceroute
 $_i_ axel # Like wget, only in parallel
 $_i_ jq # JSON
+$_i_ htmlq # like jq, but for html
 $_i_ htop
 $_i_ i7z # CPU Info
 $_i_ procs # aka ps
