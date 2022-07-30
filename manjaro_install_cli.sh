@@ -95,6 +95,8 @@ $_i_ exa # aka ls
 
 $_i_ broot # Fuzzy Search + tree + cd
 
+$_i_ sox # CLI audio player
+
 # For fun
 $_i_ fortune-mod
 $_i_ cowsay
