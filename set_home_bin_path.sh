@@ -8,6 +8,8 @@ t=~/go/bin
 t=~/.npm-global/bin
 [ -d "\$t" ] && [ ! -z "\${PATH##*\$t*}" ] && PATH=\$t:\$PATH;
 # [ -d "\$t" ] && [ ! -z "\${PATH##*\$t*}" ] && PATH=\$PATH:\$t;
+t=~/.local/bin
+[ -d "\$t" ] && [ ! -z "\${PATH##*\$t*}" ] && PATH=\$t:\$PATH;
 t=~/.bin
 [ -d "\$t" ] && [ ! -z "\${PATH##*\$t*}" ] && PATH=\$t:\$PATH;
 export PATH
