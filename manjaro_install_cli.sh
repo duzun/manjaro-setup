@@ -21,6 +21,10 @@ $_i_ paru-bin # alternative to yaourt
 $_i_ bat # like `cat`
 $_i_ binwalk
 $_i_ tokei # word count, code analysis
+$_i_ fd # better find: https://github.com/sharkdp/fd
+$_i_ fzf # general purpose fuzzy search: https://github.com/junegunn/fzf
+$_i_ thefuck # correct previous command: https://github.com/nvbn/thefuck
+$_i_ zoxide # a smarter cd command: https://github.com/ajeetdsouza/zoxide
 
 $_i_ pacui
 $_i_ bash-completion
