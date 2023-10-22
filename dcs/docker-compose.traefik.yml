@@ -4,8 +4,8 @@ services:
     traefik:
         ports:
             # The HTTP port
-            - "1080:80"
+            - "80:80"
             # The HTTPS port
-            - "1443:443"
+            - "443:443"
             # The Web UI (enabled by --api.insecure=true) exposed through Traefik
             # - "8902:8080"

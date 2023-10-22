@@ -9,24 +9,53 @@ volumes:
     npm_letsencrypt:
     npm_mysql:
 
+
 services:
     npm:
         image: "jc21/nginx-proxy-manager:latest"
         container_name: npm
         restart: always
         ports:
-            - "443:443"
-            - "80:80"
-            - "81:81"
+            - "81:81" # UI
+            # Proxy:
+            # - "443:443"
+            # - "80:80"
+            - "127.0.0.3:80:80"
+            - "127.0.0.3:443:443"
         labels:
-            hostname: "npm.lh"
+            hostname: "npm"
             traefik.enable: true
             traefik.docker.network: traefik
-            # There is only one port exposed for this container,
-            # thus no need to define it explicitly
-            traefik.http.services.npm.loadbalancer.server.port: "81"
+
+            # npm web UI listening on port :81
+            traefik.http.services.npm_ui.loadbalancer.server.port: "81"
+
+            traefik.http.routers.npms.entryPoints: "websecure" # :443
+            traefik.http.routers.npm.entryPoints: "web" # :80
+
+            traefik.http.routers.npms.rule: "HostRegexp(`npm.lh`,`{subdomain:.+?}.npm.lh`)"
+            traefik.http.routers.npms.tls: "true"
+            traefik.http.routers.npm.rule: "HostRegexp(`npm.lh`,`{subdomain:.+?}.npm.lh`)"
+
+            traefik.http.routers.npms.service: "npm_ui"
+            traefik.http.routers.npm.service: "npm_ui"
+
+            # npm proxy on ports :80 & :443 - catch-all on traefik side
+            traefik.http.services.npm_proxy.loadbalancer.server.port: "80"
+            traefik.http.routers.npm_proxy.service: "npm_proxy"
+            traefik.http.routers.npm_proxy.entryPoints: "web"
+            traefik.http.routers.npm_proxy.rule: "PathPrefix(`/`)"
+            traefik.http.routers.npm_proxy.priority: "1"
+
+            traefik.tcp.services.npm_proxys.loadbalancer.server.port: "443"
+            traefik.tcp.routers.npm_proxys.service: "npm_proxys"
+            traefik.tcp.routers.npm_proxys.entryPoints: "websecure"
+            traefik.tcp.routers.npm_proxys.rule: "HostSNI(`*`)"
+            # traefik.tcp.routers.npm_proxys.tls: "{}"
+            traefik.tcp.routers.npm_proxys.tls.passthrough: "true"
+
         healthcheck:
-            test: ["CMD", "/bin/check-health"]
+            test: [ "CMD", "/bin/check-health" ]
             interval: 10s
             timeout: 3s
         environment:
@@ -36,12 +65,12 @@ services:
             DB_MYSQL_PASSWORD: "npm4lh"
             DB_MYSQL_NAME: "npm"
         volumes:
-          - type: volume
-            source: npm_data
-            target: /data
-          - type: volume
-            source: npm_letsencrypt
-            target: /etc/letsencrypt
+            - type: volume
+              source: npm_data
+              target: /data
+            - type: volume
+              source: npm_letsencrypt
+              target: /etc/letsencrypt
         networks:
             - traefik
 
@@ -55,8 +84,8 @@ services:
             MYSQL_USER: "npm"
             MYSQL_PASSWORD: "npm4lh"
         volumes:
-          - type: volume
-            source: npm_mysql
-            target: /var/lib/mysql
+            - type: volume
+              source: npm_mysql
+              target: /var/lib/mysql
         networks:
             - traefik

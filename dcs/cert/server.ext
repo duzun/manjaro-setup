@@ -1,0 +1,36 @@
+
+authorityKeyIdentifier=keyid,issuer
+basicConstraints=CA:FALSE
+keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = localhost
+DNS.2 = local
+DNS.3 = lh
+DNS.4 = traefik
+DNS.5 = traefik.lh
+DNS.6 = *.traefik.lh
+DNS.7 = npm
+DNS.8 = npm.lh
+DNS.9 = *.npm.lh
+DNS.10 = adminer
+DNS.11 = adminer.lh
+DNS.12 = *.adminer.lh
+DNS.13 = pma
+DNS.14 = pma.lh
+DNS.15 = *.pma.lh
+DNS.16 = portainer
+DNS.17 = portainer.lh
+DNS.18 = *.portainer.lh
+DNS.19 = mailhog
+DNS.20 = mailhog.lh
+DNS.21 = *.mailhog.lh
+DNS.22 = syncthing
+DNS.23 = syncthing.lh
+DNS.24 = *.syncthing.lh
+DNS.25 = st
+DNS.26 = st.lh
+DNS.27 = *.st.lh
+IP.1 = 127.0.0.1
+IP.2 = 127.0.0.11

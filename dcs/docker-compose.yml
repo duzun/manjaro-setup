@@ -8,48 +8,82 @@ services:
     traefik:
         image: traefik:v2.1
         container_name: traefik
+        hostname: "traefik.lh"
         restart: always
         # network_mode: bridge
-        hostname: "traefik.lh"
         # Enables the web UI and tells Traefik to listen to docker
-        command: --api.insecure=true --accesslog=true --providers.docker.defaultRule='Host(`{{ or (index .Labels "hostname") (normalize .Name) }}`)'
+        command:
+            [
+                "--api.insecure=true",
+                "--accesslog=true",
+                "--entryPoints.web.address=:80",
+                "--entryPoints.websecure.address=:443",
+                "--providers.docker.defaultRule=Host(`{{ or (index .Labels \"hostname\") (normalize .Name) }}`)",
+                "--providers.file.filename=/etc/ssl/private/tls.yaml",
+            ]
         labels:
             hostname: "traefik.lh"
             traefik.enable: true
             traefik.docker.network: traefik
             # If the container exposes more than one port, we have to tell
             # Traefik which one to use:
-            traefik.http.services.traefik.loadbalancer.server.port: "8080"
+            traefik.http.services.traefik_ui.loadbalancer.server.port: "8080"
             # This rule is the same as the defaultRule (see labels.hostname)
-            # traefik.http.routers.traefik.rule: "Host(`traefik.lh`)"
-        # ports:
-        #     # The HTTP port
-        #     - "1080:80"
-        #     # The HTTPS port
-        #     - "1443:443"
-        #     # The Web UI (enabled by --api.insecure=true) exposed through Traefik
-        #     # - "8902:8080"
+            # traefik.http.routers.traefiks.rule: "Host(`traefik.lh`)"
+            traefik.http.routers.traefiks.tls: "true"
+            traefik.http.routers.traefiks.entryPoints: "websecure"
+            traefik.http.routers.traefik.entryPoints: "web"
+        ports:
+            # The HTTP port
+            - "1080:80"
+            - "127.0.0.2:80:80"
+            # The HTTPS port
+            - "1443:443"
+            - "127.0.0.2:443:443"
+            # The Web UI (enabled by --api.insecure=true) exposed through Traefik
+            # - "8902:8080"
         volumes:
             # So that Traefik can listen to the Docker events
-            - /var/run/docker.sock:/var/run/docker.sock
+            - /run/docker.sock:/var/run/docker.sock
+            - ./cert:/etc/ssl/private
         networks:
             - traefik
+
+    docker_dns:
+        image: phensley/docker-dns
+        container_name: dns
+        hostname: "dns.lh"
+        restart: always
+        volumes:
+            - /run/docker.sock:/docker.sock
+        command: --domain lh
+        networks:
+            - traefik
+        labels:
+            # hostname: "dns.lh"
+            traefik.enable: true
+            traefik.docker.network: traefik
 
     portainer:
         image: portainer/portainer
         container_name: portainer
+        hostname: "portainer.lh"
         restart: always
         # network_mode: bridge
-        hostname: "portainer.lh"
         labels:
-            hostname: "portainer.lh"
+            # hostname: "portainer.lh" # used by providers.docker.defaultRule only, when no routers
             traefik.enable: true
             traefik.docker.network: traefik
+            traefik.http.routers.portainer.entryPoints: "websecure"
+            traefik.http.routers.portainer.rule: "HostRegexp(`portainer.lh`,`{subdomain:.+?}.portainer.lh`)"
+            traefik.http.routers.portainer.tls: "true"
+            traefik.http.routers.portainer_.entryPoints: "web"
+            traefik.http.routers.portainer_.rule: "HostRegexp(`portainer.lh`,`{subdomain:.+?}.portainer.lh`)"
             # There is only one port exposed for this container,
             # thus no need to define it explicitly
-            # traefik.http.services.portainer.loadbalancer.server.port: "9000"
+            traefik.http.services.portainer.loadbalancer.server.port: "9000"
         # ports:
-        #     Web UI through traefik
+        #     # Web UI through traefik
         #     - 8901:9000
         volumes:
             - /run/docker.sock:/var/run/docker.sock
@@ -60,14 +94,17 @@ services:
     mailhog:
         image: mailhog/mailhog
         container_name: mailhog
+        hostname: "mailhog.lh"
         restart: always
         # network_mode: bridge
-        hostname: "mailhog.lh"
         labels:
             hostname: "mailhog.lh"
             traefik.enable: true
             traefik.docker.network: traefik
-            traefik.http.services.mailhog.loadbalancer.server.port: "8025"
+            traefik.http.routers.mailhogs.entryPoints: "websecure"
+            traefik.http.routers.mailhogs.tls: "true"
+            traefik.http.routers.mailhog.entryPoints: "web"
+            traefik.http.services.mailhog_ui.loadbalancer.server.port: "8025"
         ports:
             - 25:1025
             # Web UI through traefik

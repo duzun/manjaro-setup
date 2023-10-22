@@ -1,0 +1,6 @@
+tls:
+  stores:
+    default:
+      defaultCertificate:
+        certFile: /etc/ssl/private/server.pem
+        keyFile: /etc/ssl/private/server.key
