@@ -33,6 +33,7 @@ $_i_ vifm # VI File Manager
 $_i_ ccat # Syntax Highliting cat
 $_i_ traceroute
 $_i_ axel # Like wget, only in parallel
+$_i_ aria2 # Like axel, only supports more protocols
 $_i_ jq # JSON
 $_i_ htmlq # like jq, but for html
 $_i_ htop
