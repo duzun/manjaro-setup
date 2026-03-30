@@ -30,7 +30,7 @@ $_i_ pacui
 $_i_ bash-completion
 $_i_ vim # CLI Text Editor
 $_i_ vifm # VI File Manager
-$_i_ ccat # Syntax Highliting cat
+# $_i_ ccat # Syntax Highlighting cat - redundant with bat
 $_i_ traceroute
 $_i_ axel # Like wget, only in parallel
 $_i_ aria2 # Like axel, only supports more protocols
@@ -44,10 +44,11 @@ $_i_ debtap # Convert .deb package for Arch
 # A collection of performance monitoring tools (iostat,isag,mpstat,pidstat,sadf,sar)
 $_i_ sysstat
 $_i_ ps_mem
+$_i_ mokutil # Shif.efi Machine Owner Key management tool
 
-# Google Drive CLI
-$_i_ drive-bin # pull & push files
-$_i_ google-drive-ocamlfuse-opam
+# Google Drive CLI - prefer rclone instead
+# $_i_ drive-bin # pull & push files - unmaintained
+# $_i_ google-drive-ocamlfuse-opam # unmaintained
 
 
 # Network Monitoring - http://www.binarytides.com/linux-commands-monitor-network/
@@ -96,7 +97,7 @@ $_i_ jdupes # jdupes -B -S -r /btrfs/mount/point
 $_i_ duperemove # duperemove -dhr --hashfile=/var/cache/hdd.duphash /btrfs/mount/point
 $_i_ compsize
 
-$_i_ exa # aka ls
+$_i_ eza # aka ls (maintained fork of exa)
 
 $_i_ broot # Fuzzy Search + tree + cd
 
@@ -105,5 +106,5 @@ $_i_ sox # CLI audio player
 # For fun
 $_i_ fortune-mod
 $_i_ cowsay
-$_i_ espeak # Text-2-Speach synthesizer
+$_i_ espeak-ng # Text-2-Speech synthesizer (successor of espeak)
 # $_i_ aview # Image to ASCII converter

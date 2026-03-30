@@ -23,7 +23,8 @@ fi
 
 
 $_i_ docker
-$_i_ docker-compose
+# docker-compose v2 is now a docker plugin (use `docker compose` instead of `docker-compose`)
+# $_i_ docker-compose
 
 # Don't ask for sudo when running docker commands
 sudo usermod -a -G docker "$(whoami)"
@@ -78,15 +79,16 @@ if [ ! -e "$p/lib/node_modules" ]; then
     [ -e ~/.bin ] && ln -sf "$p/lib/node_modules/npm/bin/npm-cli.js" ~/.bin/npm
 fi;
 
-npm i -g json nodemon pm2 markmon jshint lesshint
+npm i -g json nodemon pm2
+# npm i -g markmon jshint lesshint # unmaintained / superseded by eslint
 
 # See https://lsp.readthedocs.io/en/latest/
-npm i -g    lsp-tsserver vue-language-server intelephense vscode-css-languageserver-bin \
+npm i -g    typescript-language-server @vue/language-server intelephense vscode-langservers-extracted \
             bash-language-server
 
 unset p
 
-# Some stuff required by some Sublime plugins:
+# Some stuff required by some Sublime/VSCode plugins:
 $_i_ shellcheck
 $_i_ pandoc
 $_i_ global

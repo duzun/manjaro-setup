@@ -68,8 +68,8 @@ fi
 # UI for systemctl
 $_i_ systemd-kcm
 
-# $_i_ redshift # not required any more, see "Night Mode" in settings
-$_i_ synergy1-bin
+# $_i_ synergy1-bin # Synergy is mostly dead; consider input-leap (open-source fork)
+$_i_ input-leap
 # $_i_ dropbox
 # $_i_ kde-servicemenus-dropbox
 
@@ -99,7 +99,7 @@ sudo cp -R "$_d_"/autofs/* /etc/autofs/
 sudo systemctl enable autofs
 sudo systemctl start autofs
 
-$_i_ etcher # write ISO to USB-Storage
+$_i_ balena-etcher # write ISO to USB-Storage (was 'etcher')
 $_i_ open-fuse-iso
 $_i_ gparted # alternative to KDE Partition Manager
 $_i_ kdiskmark # Measure storage read/write performance
@@ -110,7 +110,6 @@ $_i_ kdiff3
 $_i_ terminator
 $_i_ xorg-xkill # xkill any window app
 
-$_i_ plasma5-applets-caffeine-plus # Prevents the desktop becoming idle in full-screen mode
 $_i_ wmctrl # Window control utility
 # $_i_ pamac-gtk # this is now the default GUI package manager
 # $_i_ pamac-tray-appindicator # Tray icon using appindicator which feets better in KDE
@@ -122,10 +121,10 @@ $_i_ celluloid # video player
 # $_i_ kodi-addon-stream
 $_i_ rhythmbox # audio player
 $_i_ rhythmbox-tray-icon # plugin for rhythmbox
-$_i_ clementine # audio player
+# $_i_ clementine # audio player - development stalled
+$_i_ strawberry # maintained fork of clementine
 
-$_i_ qt-heif-image-plugin # Open HEIC images in Gwenview
-# $_i_ qt5-avif-image-plugin # Open HEIC images in Gwenview, conflicts with kimageformats
+$_i_ kimageformats # HEIF/AVIF/etc support in Qt6 (replaces qt-heif-image-plugin, qt5-avif-image-plugin)
 $_i_ kdegraphics-thumbnailers
 $_i_ heifthumbnailer
 $_i_ raw-thumbnailer
@@ -194,8 +193,6 @@ if ! ps -C crond > /dev/null; then
     sudo systemctl start cronie
 fi
 
-$_i_ notepadqq # like notepad++
-
 $_i_ vscodium-bin
 
 # [ -d ~/.config/VSCodium/User ]
@@ -215,7 +212,8 @@ then
 fi
 
 # File & Sync
-$_i_ syncthing-gtk-python3
+$_i_ syncthing-gtk
+$_i_ syncthingtray
 
 # Start syncthing delayed
 f=~/.config/autostart-scripts/syncthing-delayed.sh
@@ -230,13 +228,9 @@ systemctl start --user syncthing
 
 
 $_i_ freefilesync
-$_i_ fslint
-
-# $_i_ btsync-1.4
-# sudo systemctl enable btsync
-# sudo systemctl start btsync
-# $_i_ btsync-gui
-# google-chrome-stable http://localhost:8888 &
+# $_i_ fslint # unmaintained, replaced by czkawka
+$_i_ czkawka-gui-bin # find duplicates, empty files, similar images, etc.
+# $_i_ krokiet-bin # GUI for krokus, a command-line tool to find duplicate files and more
 
 $_i_ qbittorrent
 
@@ -256,9 +250,9 @@ $_i_ tigervnc
 $_i_ remmina
 
 # Other Remote Desktop
-$_i_ teamviewer
-sudo systemctl enable teamviewerd
-
+# $_i_ teamviewer
+# sudo systemctl enable teamviewerd
+$_i_ anydesk-bin
 
 $_i_ telegram-desktop
 
@@ -292,18 +286,6 @@ fi
 fi
 
 
-# $_i_ skypeforlinux-stable-bin
-# cat > ~/.config/autostart/skypeforlinux.desktop << EOF
-# [Desktop Entry]
-# Name=Skype for Linux
-# GenericName=Skype
-# Exec=skypeforlinux
-# Icon=skypeforlinux
-# Terminal=false
-# Type=Application
-# Categories=Network;
-# StartupNotify=false
-# EOF
 
 # SkypeForLinux doesn't use kwallet (yet?), but uses gnome-keyring instead
 if $_i_ gnome-keyring;
@@ -329,7 +311,7 @@ then
         fi
     fi
 
-    git config --global  credential.helper gnome-keyring
+    git config --global  credential.helper /usr/lib/git-core/git-credential-libsecret
     # git config --global  credential.modalprompt true
     $_i_ seahorse
 fi
@@ -362,17 +344,16 @@ then
     fi
 fi
 
-# Ctrl+` opens Guake (global shortcut)
+# Ctrl+` opens Guake (global shortcut) - Plasma 6 format
 f=~/.config/kglobalshortcutsrc
 if [ -f "$f" ];
 then
-    if ! grep -q '[guake.desktop]' -- "$f";
+    if ! grep -q '\[services\]\[guake.desktop\]' -- "$f";
     then
-		cat >> "$f" << EOF
-[guake.desktop]
-_k_friendly_name=Launch Guake Terminal
-_launch=\\tMeta+\`,none,Launch Guake Terminal
+		cat >> "$f" << 'EOF'
 
+[services][guake.desktop]
+_launch=Meta+`
 EOF
     fi
 fi
@@ -391,9 +372,9 @@ xrandr --output $x1 --primary --left-of $x2
 EOF
 fi | sudo tee -a $f > /dev/null
 
-$_i_ doublecmd-gtk2
-$_i_ sddm-config-editor-git
-$_i_ kazam
+# $_i_ doublecmd-qt6 # was doublecmd-gtk2 (GTK2 is deprecated)
+# $_i_ sddm-conf
+# $_i_ kazam # mostly abandoned, use OBS or flameshot instead
 $_i_ flameshot
 $_i_ obs-studio # screen recording/streaming
 # $_i_ obs-nvfbc-git # requires https://github.com/keylase/nvidia-patch
@@ -402,30 +383,24 @@ $_i_ kcolorchooser
 
 #$_i_ winscp
 $_i_ playonlinux
-
-# if $_i_ crossover ;
-# then
-# 	$_i_ nss-mdns
-# 	# On x64
-#     $_i_ lib32-nss-mdns
-# 	$_i_ lib32-sdl2
-#     $_i_ lib32-vkd3d
-# fi
+$_i_ bottles # modern Wine prefix manager (replaces PlayOnLinux)
+$_i_ lutris # Game manager for Linux (supports native, Wine, Steam, etc.)
 
 $_i_ ttf-ms-fonts
 
 # On x64
-$_i_ lib32-libwbclient lib32-libxslt
+$_i_ libwbclient libxslt
 
 
-$_i_ virtualbox virtualbox-host-dkms
+$_i_ virtualbox virtualbox-guest-iso virtualbox-guest-utils
+# $_i_ virtualbox-host-dkms
 
-$_i_ virt-manager virt-viewer qemu vde2 ebtables dnsmasq
+$_i_ virt-manager virt-viewer qemu-full dnsmasq # qemu renamed to qemu-full; ebtables/vde2 obsolete (nftables is default)
 sudo systemctl enable libvirtd
 # sudo systemctl start libvirtd
 echo "options kvm-intel nested=1" | tee /etc/modprobe.d/kvm-intel.conf
 
-qemu-kvm
+# qemu-kvm
 
 # If VMs doesn't start, try:
 #   yay --noconfirm linux-headers

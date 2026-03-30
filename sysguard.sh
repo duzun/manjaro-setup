@@ -2,6 +2,10 @@
 
 # Copy ./SysGuardTabs/* to ~/.local/share/ksysguard/
 # See "SelectedSheets" in ~/.config/ksysguardrc
+#
+# NOTE: KSysGuard was replaced by KDE System Monitor (plasma-systemmonitor)
+# in Plasma 5.22+. These .sgrd files are for the legacy KSysGuard.
+# For Plasma 6, consider using KDE System Monitor's .page files instead.
 
 me=$(realpath "$0")
 src="$(dirname "$me")/SysGuardTabs"
