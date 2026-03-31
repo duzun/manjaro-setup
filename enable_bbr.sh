@@ -27,4 +27,5 @@ fi
 
 sudo sysctl net.ipv4.tcp_congestion_control=bbr && \
 echo "net.ipv4.tcp_congestion_control=bbr" | sudo tee -a /etc/sysctl.d/10-custom-kernel-bbr.conf && \
-echo "net.core.default_qdisc=fq_codel" | sudo tee -a /etc/sysctl.d/10-custom-kernel-bbr.conf
+echo "net.core.default_qdisc=cake" | sudo tee -a /etc/sysctl.d/10-custom-kernel-bbr.conf
+# echo "net.core.default_qdisc=fq_codel" | sudo tee -a /etc/sysctl.d/10-custom-kernel-bbr.conf
