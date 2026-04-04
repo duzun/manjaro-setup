@@ -96,6 +96,11 @@ fi
 $_i_ sof-firmware
 $_i_ alsa-ucm-conf
 
+# Switch to PipeWire (Recommended for Meteor Lake)
+$_i_ manjaro-pipewire
+$_i_ wireplumber             # Modern session manager
+# Note: manjaro-pipewire should automatically remove conflicting pulseaudio packages
+
 # --- Power Management ---
 # TLP: advanced laptop power management
 $_i_ tlp tlp-rdw
